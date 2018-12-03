@@ -7,11 +7,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800|Roboto:400,500,700" rel="stylesheet"> 
+
   </head>
 
   <body>
+    <%= render "shared/navbar" %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    
     <%= yield %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY&callback=initMap" type="text/javascript"></script>
   </body>
 </html>

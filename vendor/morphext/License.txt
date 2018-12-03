@@ -1,0 +1,3 @@
+URL: http://morphext.fyianlai.com/
+
+About: The simplest text rotator powered by jQuery and Animate.css
