@@ -2,32 +2,6 @@
  *= require_tree .
  *= require_self
  *
- * Bootstrap
- *= require bootstrap/css/bootstrap.min
- *
- * Plugins
- *= require swiper/css/swiper.min
- *= require hamburgers/hamburgers.min
- *= require animate/animate.min
- *= require fancybox/css/jquery.fancybox.min
- *
- * Icons
- *= require font-awesome/css/font-awesome.min
- *= require ionicons/css/ionicons.min
- *= require line-icons/line-icons
- *= require line-icons-pro/line-icons-pro
- *= require linea/arrows/linea-icons
- *= require linea/basic/linea-icons
- *= require linea/ecommerce/linea-icons
- *= require linea/software/linea-icons
- *
- * Custome Style
- *= require custom-style
- *
- * Global Style
- *= require boomerang.min
- *
- *
  *
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

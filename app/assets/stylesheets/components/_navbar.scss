@@ -1,0 +1,55 @@
+nav {
+	height: 20%;
+	background: #003519;
+}
+
+nav .navbar-brand {
+	height: 60px;
+	margin-left: 22px;
+}
+
+nav .nav-link {
+	font-family: 'Roboto', sans-serif;
+	margin: 12px;
+	font-weight: 200;
+	line-height: normal;
+	font-size: 18px;
+
+	color: rgba(255, 255, 255, 0.86);
+}
+
+nav .nav-link:hover {
+	color: #D8D846!important;
+}
+
+
+nav .navbar-toggler:focus {
+	outline: none;
+}
+
+nav .dropdown-divider {
+	margin: 0;
+}
+
+nav .dropdown-menu {
+	background-color: #537060;
+	margin-top: 11.5px;
+	margin-left: 8px;
+}
+
+nav .dropdown-item {
+	color: white;
+	background-color: #537060;
+	opacity: 0.5;
+	margin: 5px;
+	width: 94%
+
+}
+
+nav .dropdown-item:hover {
+	border: 1px solid #D8D846;
+	background-color: #537060;
+	color: white;
+    border-radius: 8px;
+    opacity: 1;
+	}
