@@ -1,9 +1,16 @@
                         <!-- Map canvas -->
                         <div id="google-map">
                             <!-- #google-container will contain the map  -->
-                            <div id="map_canvas" class="map-canvas" ></div>
+                            <!-- <div id="map_canvas" class="map-canvas" ></div> -->
                         </div>
 
 
-<a href="#" class="back-to-top btn-back-to-top"></a>
- <script src="https://maps.googleapis.com/maps/api/js?key=<%=Rails.application.credentials.google_maps_api_key%>&callback=initMap" type="text/javascript"></script>
+<script>
+    var myCoords = {lat: 48.86, lng: 2.34}
+
+    var mapOptions = {
+    center: myCoords,
+    zoom: 14,
+    };
+    var map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+</script>
