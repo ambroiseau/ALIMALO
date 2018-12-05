@@ -1,20 +1,9 @@
+                        <!-- Map canvas -->
+                        <div id="google-map">
+                            <!-- #google-container will contain the map  -->
+                            <div id="map_canvas" class="map-canvas" ></div>
+                        </div>
 
-<ul>
-  <%if user_signed_in? %>
-  <li>
-    <%=  link_to "sign_out", destroy_user_session_path, method: :delete %>
-      <%=current_user.email %>
-    </li>
-    <li>
-      <%=  link_to "edit", edit_user_registration_path %>
-    
-      </li>
-    <% else %>
-    <li>
-      <%=  link_to "sign_in", new_user_session_path %>
-      </li>
-      <li>
-        <%=  link_to "sign up", new_user_registration_path %>
-      </li>
-  <% end %>
-</ul>
+
+<a href="#" class="back-to-top btn-back-to-top"></a>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY&callback=initMap" type="text/javascript"></script>
