@@ -29,14 +29,21 @@
       </div>
       </li>
 
+
         <%if user_signed_in? %>
-        <li class="nav-item">
-            <%=  link_to "Espace Pro", destroy_user_session_path, method: :delete, class:"nav-link" %>
-        </li>
+
+          <li class="nav-item">
+              <%=  link_to "Déconnexion", destroy_user_session_path, method: :delete, class:"nav-link" %>
+          </li>
+
         <% else %>
-        <li class="nav-item">
-            <%=  link_to "Espace Pro", new_user_registration_path, class:"nav-link" %>
-        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Espace Pro</a>
+            <div class="dropdown-menu" aria-labelledby="navbarNavDropdown">
+              <a class="dropdown-item" type="button" data-toggle="modal" data-target="#signUpModal">REJOINDRE</a>
+              <a class="dropdown-item" type="button" data-toggle="modal" data-target="#logInModal">CONNEXION</a>
+            </div>
+          </li>
         <% end %>
       </li>
     </ul>
