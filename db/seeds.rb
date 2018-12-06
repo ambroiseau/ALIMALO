@@ -12,6 +12,6 @@ item = Item.create(title: 'vodka Sobieski', description:
 '37.5° 70cl', price: '12.19')
 
 item = Item.create(title: 'Malboro', price: '8.00')
-shop = Shop.create(title: 'Alimentation General Italie', adress: ' 138 avenue d’Italie – 75013', tobacco: true)
-shop = Shop.create(title: 'ÉPICERIE DE TENON', adress: '46 rue Pelleport – 75020', tobacco: false)
+shop = Shop.create(title: 'Alimentation General Italie', address: ' 138 avenue d’Italie, Paris', tobacco: true)
+shop = Shop.create(title: 'ÉPICERIE DE TENON', address: '46 rue Pelleport – 75020', tobacco: false)
 
