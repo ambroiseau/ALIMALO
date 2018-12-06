@@ -4,16 +4,13 @@
     <div id="map_canvas" class="map-canvas" ></div>
 </div>
 
-<script src="/gmaps.js"></script>
-
 <script>
+    var myCoords = {lat: 48.86, lng: 2.34}
 
-	var mapObj = new GMaps({
-	  el: '#google-map',
-	  lat: 48.86,
-	  lng: 2.34,
-	  zoom: 14,
-	  styles: [
+    var mapOptions = {
+    center: myCoords,
+    zoom: 14,
+    styles: [
     {
         "featureType": "all",
         "elementType": "labels.text.fill",
@@ -177,18 +174,7 @@
         ]
     }
 	]
-	});
 
-
-var m = mapObj.addMarker({
-  lat: 48.8583701,
-  lng: 2.2944813,
-  title: 'Alimentation chelou',
-  infoWindow: {
-    content: '<h4>Alimentation chelou</h4><div>18 rue Daval, Paris</div>',
-    maxWidth: 100
-  }
-});
-
-
+    };
+    var map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 </script>
