@@ -72,11 +72,12 @@
  </script>
 
  <script>
+ $(document).ready(function () {
     var myCoords = {lat: 48.86, lng: 2.34}
 
     var mapOptions = {
     center: myCoords,
-    zoom: 10,
+    zoom: 12,
     disableDefaultUI: true,
 
     styles: [
@@ -301,14 +302,32 @@
 ] 
     };
 
+
     var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 
+    infoWindow = new google.maps.InfoWindow;
 
-    var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(<%=@shops.first.latitude%>, <%=@shops.first.longitude%>),
-    map: mymap,
-    title: 'Hello World!',
-    });
+    // Try HTML5 geolocation
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+
+        infoWindow.setPosition(pos);
+        infoWindow.setContent("Vous êtes ici!");
+        infoWindow.open(mymap);
+        mymap.setCenter(pos);
+        }, function() {
+        handleLocationError(true, infoWindow, mymap.getCenter());
+        });
+
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, mymap.getCenter());
+    }
+
 
     <% @shops.each do |shop| %>
        <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
@@ -319,5 +338,5 @@
          });
        <% end %>
     <% end %>    
-
+});
 </script>
