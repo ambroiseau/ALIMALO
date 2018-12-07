@@ -76,7 +76,7 @@
 
     var mapOptions = {
     center: myCoords,
-    zoom: 14,
+    zoom: 10,
     disableDefaultUI: true,
 
     styles: [
@@ -299,16 +299,25 @@
     ]
   }
 ] 
-
     };
-    var map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+
+    var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 
 
     var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(48.85, 2.29),
-    map: map,
+    position: new google.maps.LatLng(<%=@shops.first.latitude%>, <%=@shops.first.longitude%>),
+    map: mymap,
     title: 'Hello World!',
     });
+
+    <% @shops.each do |shop| %>
+       <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
+         new google.maps.Marker({
+         position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
+         map: mymap,
+         title: '<%=shop.title%>',
+         });
+       <% end %>
+    <% end %>    
+
 </script>
-
-
