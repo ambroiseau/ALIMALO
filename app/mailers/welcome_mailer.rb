@@ -15,7 +15,7 @@ class WelcomeMailer < Devise::Mailer
         }],
         'Subject'=> 'Merci de votre inscription.',
         'HTMLPart'=> "<h1>Merci de votre inscription!</h1>
-        <a href= '#{new_user_confirmation_url(@resource, confirmation_token: token)}'>Confirmer mon compte</a>"
+        <a href= '#{user_confirmation_url(@resource, confirmation_token: token)}'>Confirmer mon compte</a>"
         }]
     )
 
