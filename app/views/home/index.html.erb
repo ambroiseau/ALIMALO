@@ -1,6 +1,6 @@
 <div class="wrapper">
             <!-- Sidebar Holder -->
-            <nav id="sidebar" class="active">
+            <nav id="sidebar">
 
 
                 <div class="sidebar-header">
@@ -10,7 +10,7 @@
 
                 <ul class="list-unstyled components">
                 	<div class="etat">
-                	<h3>CHEZ OMAR</h3>
+                	<h3 id="test">CHEZ OMAR</h3>
                     <h4>OUVERT</h4>
                 </div>
 
@@ -64,11 +64,11 @@
  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
  <script type="text/javascript">
-     $(document).ready(function () {
-         $('#sidebarCollapse').on('click', function () {
-             $('#sidebar').toggleClass('active');
-         });
-     });
+     // $(document).ready(function () {
+         // $('#sidebarCollapse').on('click', function () {
+         //     $('#sidebar').toggleClass('active');
+         // });
+     // });
  </script>
 
  <script>
@@ -328,6 +328,8 @@
         handleLocationError(false, infoWindow, mymap.getCenter());
     }
 
+    $("#sidebar").hide();
+
     i = 0;
     var markers=[];
     var contents = [];
@@ -344,7 +346,7 @@
         });
 
         markers[i].index = i;
-        contents[i] = '<div id="<%=shop.id%>">' + '<%=shop.address%>' + '</div>';
+        contents[i] = '<div id="<%=shop.id%>">' + '<%=shop.adress%>' + '</div>';
 
         infowindows[i] = new google.maps.InfoWindow({
         content: contents[i],
@@ -352,11 +354,15 @@
         });
 
         google.maps.event.addListener(markers[i], 'click', function() {
-            console.log("ceci est l'index", this.index); // print marker index to browser console
             infowindows[this.index].open(mymap,markers[this.index]);
             mymap.panTo(markers[this.index].getPosition());
+            $("#sidebar").show();
 
-            // à faire : lien pour aller chercher toutes les infos du shop en Ajax
+            // à faire : lien pour aller chercher toutes les infos du shop
+            document.getElementById("test").innerHTML += "<%=shop.title%>";
+
+
+
         }); 
 
        <% end %>

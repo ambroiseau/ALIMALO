@@ -3,7 +3,7 @@ class CreateShops < ActiveRecord::Migration[5.2]
     create_table :shops do |t|
 			t.string :title
 			t.belongs_to :user, index: true, optional: true
-			t.string :address
+			t.string :adress
 			t.decimal :latitude, optional: true
 			t.decimal :longitude, optional: true
 			t.boolean :tobacco
