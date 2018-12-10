@@ -328,15 +328,39 @@
         handleLocationError(false, infoWindow, mymap.getCenter());
     }
 
+    i = 0;
+    var markers=[];
+    var contents = [];
+    var infowindows = [];
 
     <% @shops.each do |shop| %>
-       <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
-         new google.maps.Marker({
-         position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
-         map: mymap,
-         title: '<%=shop.title%>',
-         });
+       
+      <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
+
+        markers[i] = new google.maps.Marker({
+          position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
+          map: mymap,
+          title: '<%=shop.title%>'
+        });
+
+        markers[i].index = i;
+        contents[i] = '<div id="<%=shop.id%>">' + '<%=shop.address%>' + '</div>';
+
+        infowindows[i] = new google.maps.InfoWindow({
+        content: contents[i],
+        maxWidth: 300
+        });
+
+        google.maps.event.addListener(markers[i], 'click', function() {
+            console.log("ceci est l'index", this.index); // print marker index to browser console
+            infowindows[this.index].open(mymap,markers[this.index]);
+            mymap.panTo(markers[this.index].getPosition());
+
+            // à faire : lien pour aller chercher toutes les infos du shop en Ajax
+        }); 
+
        <% end %>
+       i++;
     <% end %>
     var  transitLayer = new google.map.TransitLayer();
     transitLayer.setMap(map);
