@@ -8,12 +8,27 @@
 
 
 
-item = Item.create(title: 'vodka Sobieski', description:
-'37.5° 70cl', price: '12.19')
-
+Shop.destroy_all
 item = Item.create(title: 'Malboro', price: '8.00')
-shop = Shop.create(title: 'Alimentation General Italie', address: ' 138 avenue d’Italie, Paris', tobacco: true)
-shop = Shop.create(title: 'ÉPICERIE DE TENON', address: '46 rue Pelleport, Paris', tobacco: false)
+
+shop = Shop.create(title: 'Alimentation General Italie', adress: ' 138 avenue d’Italie – 75013', tobacco: true)
+shop.operating_hours.create(day: 1, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(day: 2, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(day: 3, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(day: 4, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(day: 5, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(day: 6, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(day: 7, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
+shop = Shop.create(title: 'ÉPICERIE DE TENON', adress: '46 rue Pelleport – 75020', tobacco: false)
+shop.operating_hours.create(day: 1, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(day: 2, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(day: 3, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(day: 4, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(day: 5, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(day: 6, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(day: 7, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Libre-service Italie', address: '190 avenue d’Italie, Paris', tobacco: true)
 shop = Shop.create(title: 'Station-service Avia', address: '5 boulervard Garibaldi, Paris', tobacco: false)
 shop = Shop.create(title: 'Tôt ou tard: épicerie libre-service', address: '39 rue Letellier, Paris', tobacco: false)

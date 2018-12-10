@@ -6,7 +6,7 @@ class WelcomeMailer < Devise::Mailer
   def confirmation_instructions(user, token, opts)
     my_mail = Mailjet::Send.create(messages: [{
         'From'=> {
-         'Email'=> 'Axel.Alim.Allo@gmail.com',
+         'Email'=> Rails.application.credentials.default_email,
          'Name'=> 'Alim-Alo'
          },
         'To'=> [{
