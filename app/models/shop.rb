@@ -5,14 +5,16 @@ class Shop < ApplicationRecord
 	geocoded_by :address
   after_validation :geocode
 
-	def self.is_open?
+	def is_open?
 		@time = Time.now.to_formatted_s(:time)
 
-#Recupere le shop courant à automatiser
-		@shop = Shop.find(1)
-		@open_time = @open[:open].to_formatted_s(:time)
+		#Recupere le numero du jour actuel
+		day = Time.now
+		day = day.strftime("%w")
+
+
 #Recupere l'operating hour du jour souhaité à automatise
-		@open = @shop.operating_hours.find(1)
+		@open = self.operating_hours.find_by(day: day)
 
 		@open_time = @open[:open].to_formatted_s(:time)
 		@close_time = @open[:close].to_formatted_s(:time)
