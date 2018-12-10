@@ -13,7 +13,7 @@
                 	<h3>CHEZ OMAR</h3>
                     <h4>OUVERT</h4>
                 </div>
-                    
+
                     <li>
                     	nbr de km
 
@@ -49,7 +49,7 @@
                     	<button id="sidebarCollapse"><span class="hyperspan"></button></a>
                      </div>
                 </div>
-                
+
                 <div id="google-map"></div>
 
 
@@ -299,7 +299,7 @@
       }
     ]
   }
-] 
+]
     };
 
 
@@ -337,6 +337,8 @@
          title: '<%=shop.title%>',
          });
        <% end %>
-    <% end %>    
+    <% end %>
+    var  transitLayer = new google.map.TransitLayer();
+    transitLayer.setMap(map);
 });
 </script>
