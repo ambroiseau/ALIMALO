@@ -5,6 +5,7 @@ class CreateOperatingHours < ActiveRecord::Migration[5.2]
   	t.integer :day
 		t.time :open
   	t.time :close
+		t.boolean :close_soon
 		t.datetime :valid_from
 		t.datetime :valid_through
 
