@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-default container-fluid pl-6">
-  <div>
+  <div id="alimlogo">
   <%= image_tag 'alimalo1.png', class:"navbar-brand" %>
 </div>
 
@@ -50,3 +50,15 @@
   </div>
 
 </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".navbar-brand").mouseenter(function () {
+            $(this).css('box-shadow', '0 0 15px #ffee10');
+        });
+        $(".navbar-brand").mouseleave(function () {
+            $(this).css('box-shadow', 'none');
+        });
+    }
+</script>
