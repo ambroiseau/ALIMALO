@@ -1,6 +1,7 @@
 nav {
-	height: 20%;
+	height: 0%;
 	background: #003519;
+	z-index: 5000;	
 }
 
 nav .navbar-brand {
@@ -16,12 +17,11 @@ nav .nav-link {
 	font-size: 18px;
 
 	color: rgba(255, 255, 255, 0.86);
-}
 
-nav .nav-link:hover {
-	color: #D8D846!important;
+	&:hover {
+		color: #D8D846!important;
+	}
 }
-
 
 nav .navbar-toggler:focus {
 	outline: none;
@@ -38,18 +38,18 @@ nav .dropdown-menu {
 }
 
 nav .dropdown-item {
-	color: white;
-	background-color: #537060;
-	opacity: 0.5;
-	margin: 5px;
-	width: 94%
+	color: white!important;
+	background-color: #537060!important;
+	opacity: 0.5!important;
+	margin: 5px!important;
+	width: 94%;
 
+	&:hover {
+		border: 1px solid #D8D846!important;
+		background-color: #537060!important;
+		color: white!important;
+	    border-radius: 8px!important;
+	    opacity: 1!important;
+	}
 }
 
-nav .dropdown-item:hover {
-	border: 1px solid #D8D846;
-	background-color: #537060;
-	color: white;
-    border-radius: 8px;
-    opacity: 1;
-	}

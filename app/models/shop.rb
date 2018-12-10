@@ -2,6 +2,8 @@ class Shop < ApplicationRecord
 	belongs_to :user, optional: true
 	has_and_belongs_to_many :items
 	has_many :operating_hours, dependent: :destroy
+	geocoded_by :address
+  after_validation :geocode
 
 	def is_open?
 		@time = Time.now.to_formatted_s(:time)

@@ -1,15 +1,344 @@
-<!-- Map canvas -->
-<div id="google-map">
-    <!-- #google-container will contain the map  -->
-    <div id="map_canvas" class="map-canvas" ></div>
-</div>
+<div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
 
-<script>
+
+                <div class="sidebar-header">
+                    <%= image_tag ('alim.jpg'), style:"width: 400px;" %>
+                </div>
+
+
+                <ul class="list-unstyled components">
+                	<div class="etat">
+                	<h3>CHEZ OMAR</h3>
+                    <h4>OUVERT</h4>
+                </div>
+
+                    <li>
+                    	nbr de km
+
+                        <a href="#">À Propos</a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Horaires</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a href="#">Lundi</a></li>
+                            <li><a href="#">Mardi</a></li>
+                            <li><a href="#">Mercredi</a></li>
+                            <li><a href="#">Jeudi</a></li>
+                            <li><a href="#">Vendredi</a></li>
+                            <li><a href="#">Samedi</a></li>
+                            <li><a href="#">Dimanche</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <!-- Map canvas -->
+
+                <div class="navbar navbar-default ">
+                    <div class="container-fluid">
+                    	<button id="sidebarCollapse"><span class="hyperspan"></button></a>
+                     </div>
+                </div>
+
+                <div id="google-map"></div>
+
+
+            </div>
+
+         </div>
+     </div>
+
+
+
+<!-- jQuery CDN -->
+ <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+ <script type="text/javascript">
+     $(document).ready(function () {
+         $('#sidebarCollapse').on('click', function () {
+             $('#sidebar').toggleClass('active');
+         });
+     });
+ </script>
+
+ <script>
+ $(document).ready(function () {
     var myCoords = {lat: 48.86, lng: 2.34}
 
     var mapOptions = {
     center: myCoords,
-    zoom: 14,
+    zoom: 12,
+    disableDefaultUI: true,
+
+    styles: [
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#ffffff"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#000000"
+      },
+      {
+        "lightness": 13
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#000000"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#144b53"
+      },
+      {
+        "lightness": 14
+      },
+      {
+        "weight": 1.4
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#1ee7e4"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape",
+    "stylers": [
+      {
+        "color": "#08304b"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#fbf6f6"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#0c4152"
+      },
+      {
+        "lightness": 5
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#084a69"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.medical",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#000000"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#3a1738"
+      },
+      {
+        "lightness": 15
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#000000"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#0b434f"
+      },
+      {
+        "lightness": 25
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "stylers": [
+      {
+        "color": "#ffe800"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#000000"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "stylers": [
+      {
+        "color": "#146474"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "stylers": [
+      {
+        "color": "#021019"
+      }
+    ]
+  }
+]
     };
-    var map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+
+
+    var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+
+    infoWindow = new google.maps.InfoWindow;
+
+    // Try HTML5 geolocation
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+
+        infoWindow.setPosition(pos);
+        infoWindow.setContent("Vous êtes ici!");
+        infoWindow.open(mymap);
+        mymap.setCenter(pos);
+        }, function() {
+        handleLocationError(true, infoWindow, mymap.getCenter());
+        });
+
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, mymap.getCenter());
+    }
+
+
+    <% @shops.each do |shop| %>
+       <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
+         new google.maps.Marker({
+         position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
+         map: mymap,
+         title: '<%=shop.title%>',
+         });
+       <% end %>
+    <% end %>
+    var  transitLayer = new google.map.TransitLayer();
+    transitLayer.setMap(map);
+});
 </script>

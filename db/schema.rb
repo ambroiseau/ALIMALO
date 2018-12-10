@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2018_12_04_192242) do
   create_table "shops", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id"
-    t.string "adress"
-    t.decimal "latitute"
+    t.string "address"
+    t.decimal "latitude"
     t.decimal "longitude"
     t.boolean "tobacco"
     t.string "image_url"
