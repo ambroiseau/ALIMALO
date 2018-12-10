@@ -8,7 +8,7 @@
 
 
 
-
+Shop.destroy_all
 item = Item.create(title: 'Malboro', price: '8.00')
 
 shop = Shop.create(title: 'Alimentation General Italie', adress: ' 138 avenue d’Italie – 75013', tobacco: true)
