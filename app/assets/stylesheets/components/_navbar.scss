@@ -1,6 +1,6 @@
 nav {
 	height: 0%;
-	background: #003519;
+	background: #051018;
 	z-index: 5000;	
 }
 
@@ -10,11 +10,11 @@ nav .navbar-brand {
 }
 
 nav .nav-link {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', sans-serif !important;
 	margin: 12px;
 	font-weight: 200;
 	line-height: normal;
-	font-size: 18px;
+	font-size: 20px;
 
 	color: rgba(255, 255, 255, 0.86);
 
@@ -53,3 +53,6 @@ nav .dropdown-item {
 	}
 }
 
+nav #alimlogo:hover {
+	transform: scale(1.1);
+}
