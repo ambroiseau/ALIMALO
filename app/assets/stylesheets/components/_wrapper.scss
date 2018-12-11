@@ -64,7 +64,7 @@
     border-radius: 1em;
 }
 
-.wrapper #sidebar.active {
+.wrapper #sidebar.inactive {
     bottom: -90vh;
     @media (min-width: 991px) {
         margin-left: -450px;
@@ -95,7 +95,7 @@
     }
 }
 
-.wrapper #sidebar ul li.active > a, .wrapper a[aria-expanded="true"] {
+.wrapper #sidebar ul li.inactive > a, .wrapper a[aria-expanded="true"] {
     color: #fff;
     background: #537060;
 }

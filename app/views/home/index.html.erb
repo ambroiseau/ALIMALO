@@ -1,6 +1,7 @@
 <div class="wrapper">
             <!-- Sidebar Holder -->
-            <nav id="sidebar">
+            <nav id="sidebar" class="inactive">
+
 
 
                 <div class="sidebar-header">
@@ -64,11 +65,26 @@
  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
  <script type="text/javascript">
-     // $(document).ready(function () {
-         // $('#sidebarCollapse').on('click', function () {
-         //     $('#sidebar').toggleClass('active');
-         // });
-     // });
+      $(document).ready(function () {
+
+        $("#sidebarCollapse").click(function() {
+            console.log("AZEZAEZAEAZEAZEAZEAZEAZEAZE");
+
+        if ( $("#sidebar").hasClass("inactive") ) {
+            $("#sidebar").removeClass("inactive");
+            console.log("Show")
+        } else {
+            console.log("Hide")
+            $("#sidebar").addClass("inactive");
+
+        };
+    });
+
+
+          // $('#sidebarCollapse').on('click', function () {
+          //     $('#sidebar').toggleClass('inactive');
+          // });
+      });
  </script>
 
  <script>
@@ -327,7 +343,6 @@
         handleLocationError(false, infoWindow, mymap.getCenter());
     }
 
-    $("#sidebar").hide();
 
     i = 0;
     var markers=[];
@@ -358,10 +373,21 @@
         google.maps.event.addListener(markers[i], 'click', function() {
             infowindows[this.index].open(mymap,markers[this.index]);
             mymap.panTo(markers[this.index].getPosition());
-            $("#sidebar").show();
+
+
+            // on click marker, reveal sidebar
+            if ( $("#sidebar").hasClass("inactive") ) {
+                $("#sidebar").removeClass("inactive");
+                console.log("Show")
+            };
+
 
             // à faire : lien pour aller chercher toutes les infos du shop
             document.getElementById("test").innerHTML = contents[i];
+
+
+            
+            // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
 
 
 
