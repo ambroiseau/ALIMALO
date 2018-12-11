@@ -1,3 +1,7 @@
+
+/* ---------------------------------------------------
+    GLOBAL STYLE
+----------------------------------------------------- */
 .wrapper p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
@@ -26,45 +30,53 @@
 }
 
 .wrapper #sidebar {
-    height: 80vh;
+    height: 75vh;
     background-color: #537060;
     color: #fff;
     transition: all 0.3s;
-    overflow-y: hidden;
+    overflow-x: hidden;
     position: fixed;
     bottom: 0;
     width: 100%;
+    padding: 20px;
+    border: 10px solid #051018;
+    margin-bottom: 10vh;
+    border-top-left-radius:2em;
+    border-top-right-radius:2em; 
     @media (min-width: 991px) {
         position: static;
         min-width: 450px;
         max-width: 450px;
         height: 100vh;
+        border-radius:0;
         background-color: #537060;
+        border-left: 10px solid #051018;
         color: #fff;
         transition: all 0.3s;
-        padding: 20px;
         overflow-y: hidden;
+        overflow-x: none;
+        border-width: 0px;
     }
 }
 
+.wrapper #sidebar img {
+    width: 100%;
+    border-radius: 1em;
+}
+
 .wrapper #sidebar.active {
-    bottom: -80vh;
-    
+    bottom: -90vh;
     @media (min-width: 991px) {
         margin-left: -450px;
     }
 }
 
 .wrapper #sidebar .sidebar-header {
-    padding: 20px;
     width:100%;
-    @media (min-width: 991px) {
-        width: 350px;
-    }
 }
 
 .wrapper #sidebar ul.components {
-    padding: 20px 0;
+    padding: 40px 0;
     border-bottom: 1px solid #537060;
 }
 
@@ -125,8 +137,6 @@
     CONTENT STYLE
 ----------------------------------------------------- */
 
-
-
 .wrapper #content {
     position: static;
     width: 100%;
@@ -140,7 +150,7 @@
 
 #google-map {
     width: 100%;
-    height: 90vh;
+    height: 92vh;
     opacity: 1;
 }
 
@@ -149,7 +159,9 @@
     background: #fff;
     width:100%;
     height: 10vh;
-    border: 5px solid black;
+    border: 10px solid black;
+    border-top-left-radius:2%;
+    border-top-right-radius: 2%; 
     z-index: 90000;
     background-color:white;
     opacity: 0.5; 
@@ -159,7 +171,7 @@
             background: #fff;
             width:70px;
             height: 100%;
-            border: 5px solid #051018;
+            border: 10px solid #051018;
             border-radius: 0;
             z-index: 4000;
             float: left;
@@ -182,64 +194,3 @@ button:focus {
 
 }
 
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
-
-
-
-
-/* Sidebar */
-/*
-#sidebar-wrapper {
-    z-index: 1;
-    position: absolute;
-    width: 0;
-    height: 100%;
-    overflow-y: hidden;
-    background: #2C3E50;
-    border: 2px solid red;
-    opacity: 0.9;
-}
-
-/* Always take up entire screen */
-/*#page-content-wrapper {
-    width: 100%;
-    height: 90vh;
-    position: absolute;
-}
-
-#page-content-wrapper button {
-    border: 3px solid orange;
-    width: 5%;
-    height: 100%;
-    float: left;
-    background-color:white;
-    opacity: 0.5; 
-    z-index: 2;
-    position: absolute;
-
-    &:hover{
-        opacity: 0.9;
-    }
-
-    &:focus {
-        outline: none;
-    }
-
-    &::before {
-
-    }
-}
-
-#page-content-wrapper .container-fluid {
-    width: 100%;
-    height: 100%;
-    border: 5px solid blue;
-    float: right;
-    z-index: 1;
-    background-color: red;
-    position: absolute;
-    opacity: 0.5;
-}
-*/

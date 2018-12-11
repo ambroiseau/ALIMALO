@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2018_12_04_192242) do
     t.integer "day"
     t.time "open"
     t.time "close"
-    t.boolean "close_soon"
     t.datetime "valid_from"
     t.datetime "valid_through"
     t.index ["shop_id"], name: "index_operating_hours_on_shop_id"

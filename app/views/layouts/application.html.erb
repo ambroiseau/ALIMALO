@@ -16,13 +16,13 @@
   <body>
     
     <%= render "shared/navbar" %>
+
     <%= yield %>
-    <%= render "shared/alert" %>
     <% unless user_signed_in? %>
       <%= render partial: 'devise/registrations/new' %>
       <%= render partial: 'devise/sessions/new' %>
     <% end %>
-
+    <%= render "shared/alert" %>
     <%= render "shared/footer" %>
 
     
