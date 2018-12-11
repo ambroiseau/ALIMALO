@@ -54,10 +54,11 @@ ActiveRecord::Schema.define(version: 2018_12_10_141709) do
 
   create_table "operating_hours", force: :cascade do |t|
     t.bigint "shop_id"
-    t.integer "day_of_week"
-    t.string "name_of_day"
+    t.integer "day"
     t.time "open"
     t.time "close"
+    t.datetime "valid_from"
+    t.datetime "valid_through"
     t.index ["shop_id"], name: "index_operating_hours_on_shop_id"
   end
 

@@ -5,6 +5,9 @@ class Shop < ApplicationRecord
 	geocoded_by :address
   after_validation :geocode
 
+  has_one_attached :front_picture
+  has_many_attached :pictures
+
 	def self.is_open?
 		@time = Time.now.to_formatted_s(:time)
 
