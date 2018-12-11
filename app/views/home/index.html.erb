@@ -346,11 +346,11 @@
         });
 
         markers[i].index = i;
-        contents[i] = '<div id="<%=shop.id%>">' + '<%=shop.adress%>' + '</div>';
+        contents[i] = "<div id=[i]>" + "<%=shop.adress%>" + "</div>";
 
         infowindows[i] = new google.maps.InfoWindow({
-        content: contents[i],
-        maxWidth: 300
+            content: contents[i],
+            maxWidth: 300
         });
 
         google.maps.event.addListener(markers[i], 'click', function() {
@@ -359,7 +359,7 @@
             $("#sidebar").show();
 
             // à faire : lien pour aller chercher toutes les infos du shop
-            document.getElementById("test").innerHTML += "<%=shop.title%>";
+            document.getElementById("test").innerHTML = contents[i];
 
 
 
@@ -368,6 +368,7 @@
        <% end %>
        i++;
     <% end %>
+
     var  transitLayer = new google.map.TransitLayer();
     transitLayer.setMap(map);
 });
