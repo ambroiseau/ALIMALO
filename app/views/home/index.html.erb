@@ -49,7 +49,7 @@
                     	<button id="sidebarCollapse"><span class="hyperspan"></button></a>
                      </div>
                 </div>
-
+                <%= render 'shared/pulse' %>
                 <div id="google-map"></div>
 
 
@@ -306,7 +306,7 @@
     var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 
     infoWindow = new google.maps.InfoWindow;
-
+    
     // Try HTML5 geolocation
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -316,7 +316,6 @@
         };
 
         infoWindow.setPosition(pos);
-        infoWindow.setContent("Vous êtes ici!");
         infoWindow.open(mymap);
         mymap.setCenter(pos);
         }, function() {
@@ -334,6 +333,9 @@
     var markers=[];
     var contents = [];
     var infowindows = [];
+    var myMarker = {
+		icon: 'mymarker.png'
+	};
 
     <% @shops.each do |shop| %>
 
