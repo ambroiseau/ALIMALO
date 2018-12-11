@@ -336,7 +336,7 @@
     var infowindows = [];
 
     <% @shops.each do |shop| %>
-       
+
       <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
 
         markers[i] = new google.maps.Marker({
@@ -363,7 +363,7 @@
 
 
 
-        }); 
+        });
 
        <% end %>
        i++;
