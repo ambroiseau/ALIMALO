@@ -2,6 +2,7 @@
 /* ---------------------------------------------------
     GLOBAL STYLE
 ----------------------------------------------------- */
+
 .wrapper p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
@@ -18,7 +19,7 @@
 
 
 /* ---------------------------------------------------
-    SIDEBAR STYLE
+    SIDEBAR SHOW/HIDE
 ----------------------------------------------------- */
 .wrapper {
     display: flex;
@@ -33,7 +34,7 @@
     height: 75vh;
     background-color: #537060;
     color: #fff;
-    transition: all 0.3s;
+    transition: all 0.4s;
     overflow-x: hidden;
     position: fixed;
     bottom: 0;
@@ -52,23 +53,29 @@
         background-color: #537060;
         border-left: 10px solid #051018;
         color: #fff;
-        transition: all 0.3s;
+        transition: all 0.4s;
         overflow-y: hidden;
         overflow-x: none;
         border-width: 0px;
     }
 }
 
-.wrapper #sidebar img {
-    width: 100%;
-    border-radius: 1em;
-}
 
 .wrapper #sidebar.inactive {
     bottom: -90vh;
     @media (min-width: 991px) {
         margin-left: -450px;
     }
+}
+
+
+/* ---------------------------------------------------
+    INNER SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper #sidebar img {
+    width: 100%;
+    border-radius: 1em;
 }
 
 .wrapper #sidebar .sidebar-header {
