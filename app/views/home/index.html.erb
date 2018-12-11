@@ -47,7 +47,7 @@
 
                 <div class="navbar navbar-default ">
                     <div class="container-fluid">
-                    	<button id="sidebarCollapse"><span class="hyperspan"></button></a>
+                    	<a id="sidebarCollapse"><span class="hyperspan"></span></a>
                      </div>
                 </div>
                 <%= render 'shared/pulse' %>
@@ -60,34 +60,27 @@
      </div>
 
 
+<script type="text/javascript">
+    $(document).ready(function () {
 
-<!-- jQuery CDN -->
- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+      $("#sidebarCollapse").click(function() {
+          console.log("AZEZAEZAEAZEAZEAZEAZEAZEAZE");
 
- <script type="text/javascript">
-      $(document).ready(function () {
+      if ( $("#sidebar").hasClass("inactive") ) {
+          $("#sidebar").removeClass("inactive");
+          console.log("Show")
+      } else {
+          console.log("Hide")
+          $("#sidebar").addClass("inactive");
 
-        $("#sidebarCollapse").click(function() {
-            console.log("AZEZAEZAEAZEAZEAZEAZEAZEAZE");
+      };
+  });
 
-        if ( $("#sidebar").hasClass("inactive") ) {
-            $("#sidebar").removeClass("inactive");
-            console.log("Show")
-        } else {
-            console.log("Hide")
-            $("#sidebar").addClass("inactive");
-
-        };
-    });
+});
+</script>
 
 
-          // $('#sidebarCollapse').on('click', function () {
-          //     $('#sidebar').toggleClass('inactive');
-          // });
-      });
- </script>
-
- <script>
+<script>
  $(document).ready(function () {
     var myCoords = {lat: 48.86, lng: 2.34}
 
@@ -390,7 +383,6 @@
             // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
 
 
-
         });
 
        <% end %>
@@ -401,3 +393,4 @@
     transitLayer.setMap(map);
 });
 </script>
+
