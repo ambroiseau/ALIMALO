@@ -303,7 +303,6 @@
 
 var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 
-
 class MyPosition extends google.maps.OverlayView {
 
     constructor (pos, map) {
@@ -331,12 +330,66 @@ class MyPosition extends google.maps.OverlayView {
 
 }
 
+// Try HTML5 geolocation
+if (navigator.geolocation) {
 navigator.geolocation.getCurrentPosition(function(position) {
-
     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
- 
     new MyPosition(pos, mymap);
-});}); // end document ready
+    mymap.setCenter(pos);
+     }, function() {
+    handleLocationError(true, MyPosition, mymap.getCenter());
+    });
+
+} else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, MyPosition, mymap.getCenter());
+}
+
+
+i = 0;
+var markers=[];
+var contents = [];
+var infowindows = [];
+    
+
+<% @shops.each do |shop| %>
+
+  <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
+
+    markers[i] = new google.maps.Marker({
+      position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
+      map: mymap,
+      title: '<%=shop.title%>'
+    });
+
+    markers[i].index = i;
+    contents[i] = "<div id=[i]>" + "<%=shop.adress%>" + "</div>";
+
+    infowindows[i] = new google.maps.InfoWindow({
+        content: contents[i],
+        maxWidth: 300
+    });
+
+    google.maps.event.addListener(markers[i], 'click', function() {
+        infowindows[this.index].open(mymap,markers[this.index]);
+        mymap.panTo(markers[this.index].getPosition());
+        // on click marker, reveal sidebar
+        if ( $("#sidebar").hasClass("inactive") ) {
+            $("#sidebar").removeClass("inactive");
+        };
+
+        // à faire : lien pour aller chercher toutes les infos du shop
+        document.getElementById("test").innerHTML = contents[i];
+
+        // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
+    });
+
+   <% end %>
+   i++;
+<% end %>
+
+
+});
 
 
 </script>
