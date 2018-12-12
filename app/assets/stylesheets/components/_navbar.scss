@@ -1,6 +1,8 @@
 nav {
-	height: 20%;
-	background: #003519;
+	height: 0%;
+	background: #051018;
+	z-index: 5000;	
+	width: 100%;
 }
 
 nav .navbar-brand {
@@ -9,19 +11,18 @@ nav .navbar-brand {
 }
 
 nav .nav-link {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', sans-serif !important;
 	margin: 12px;
 	font-weight: 200;
 	line-height: normal;
-	font-size: 18px;
+	font-size: 20px;
 
 	color: rgba(255, 255, 255, 0.86);
-}
 
-nav .nav-link:hover {
-	color: #D8D846!important;
+	&:hover {
+		color: #D8D846!important;
+	}
 }
-
 
 nav .navbar-toggler:focus {
 	outline: none;
@@ -35,21 +36,25 @@ nav .dropdown-menu {
 	background-color: #537060;
 	margin-top: 11.5px;
 	margin-left: 8px;
+	z-index: 1000000;
 }
 
 nav .dropdown-item {
-	color: white;
-	background-color: #537060;
-	opacity: 0.5;
-	margin: 5px;
-	width: 94%
+	color: white!important;
+	background-color: #537060!important;
+	opacity: 0.5!important;
+	margin: 5px!important;
+	width: 94%;
 
+	&:hover {
+		border: 1px solid #D8D846!important;
+		background-color: #537060!important;
+		color: white!important;
+	    border-radius: 8px!important;
+	    opacity: 1!important;
+	}
 }
 
-nav .dropdown-item:hover {
-	border: 1px solid #D8D846;
-	background-color: #537060;
-	color: white;
-    border-radius: 8px;
-    opacity: 1;
-	}
+nav #alimlogo:hover {
+	transform: scale(1.1);
+}

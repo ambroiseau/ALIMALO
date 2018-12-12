@@ -6,7 +6,7 @@ class WelcomeMailer < Devise::Mailer
   def confirmation_instructions(user, token, opts)
     my_mail = Mailjet::Send.create(messages: [{
         'From'=> {
-         'Email'=> 'Axel.Alim.Allo@gmail.com',
+         'Email'=> Rails.application.credentials.default_email,
          'Name'=> 'Alim-Alo'
          },
         'To'=> [{
@@ -15,7 +15,7 @@ class WelcomeMailer < Devise::Mailer
         }],
         'Subject'=> 'Merci de votre inscription.',
         'HTMLPart'=> "<h1>Merci de votre inscription!</h1>
-        <a href= '#{new_user_confirmation_url(@resource, confirmation_token: token)}'>Confirmer mon compte</a>"
+        <a href= '#{user_confirmation_url(@resource, confirmation_token: token)}'>Confirmer mon compte</a>"
         }]
     )
 

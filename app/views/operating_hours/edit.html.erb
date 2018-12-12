@@ -1,0 +1,24 @@
+<div class="horaires">
+  <h1>modifiez vos horaires</h1>
+  </div>
+  <% if @hours.open == nil && @hours.close == nil %>
+  <div class="close">
+    <%= form_for @hours, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+      <%= f.time_field :open%>
+      <%= f.time_field :close %>
+    	<%= f.submit "Update" %>
+    	<%end%>
+      
+<%else%>
+<div class="open">
+<%= form_for @hours, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+  <%= f.time_field :open%>
+  <%= f.time_field :close %>
+	<%= f.submit "Update" %>
+	<%end%>
+</div>
+<div class="longeur">
+  <p>vous ete obliger de remplir une horaires pour changer de page</p>
+  </div>
+</div>
+	<%end%>

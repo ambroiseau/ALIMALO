@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-default container-fluid pl-6">
-  <div>
+  <div id="alimlogo">
   <%= image_tag 'alimalo1.png', class:"navbar-brand" %>
 </div>
 
@@ -39,9 +39,9 @@
         <% else %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Espace Pro</a>
-            <div class="dropdown-menu" aria-labelledby="navbarNavDropdown">
-              <a class="dropdown-item" type="button" data-toggle="modal" data-target="#signUpModal">REJOINDRE</a>
-              <a class="dropdown-item" type="button" data-toggle="modal" data-target="#logInModal">CONNEXION</a>
+            <div class="dropdown-menu" aria-labelledby="navbarNavDropdown" id="espacepro">
+              <a class="dropdown-item" data-toggle="modal" data-target="#signUpModal">REJOINDRE</a>
+              <a class="dropdown-item" data-toggle="modal" data-target="#logInModal">CONNEXION</a>
             </div>
           </li>
         <% end %>

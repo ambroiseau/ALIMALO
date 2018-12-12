@@ -4,7 +4,7 @@ class CreateShops < ActiveRecord::Migration[5.2]
 			t.string :title
 			t.belongs_to :user, index: true, optional: true
 			t.string :adress
-			t.decimal :latitute, optional: true
+			t.decimal :latitude, optional: true
 			t.decimal :longitude, optional: true
 			t.boolean :tobacco
 			t.string :image_url

@@ -1,15 +1,396 @@
-<!-- Map canvas -->
-<div id="google-map">
-    <!-- #google-container will contain the map  -->
-    <div id="map_canvas" class="map-canvas" ></div>
+<div class="wrapper">
+  <!-- Sidebar CONTENT -->
+  <nav id="sidebar" class="inactive">
+
+    <div class="sidebar-header">
+        <%= image_tag ('alim.jpg') %>
+    </div>
+
+    <ul class="list-unstyled components">
+    	<div class="etat">
+    	  <h3 id="test">CHEZ OMAR</h3>
+        <h4>OUVERT</h4>
+      </div>
+
+      <li>
+      	nbr de km API
+        <a href="#">À Propos</a>
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Horaires</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+          <li><a href="#">Lundi</a></li>
+          <li><a href="#">Mardi</a></li>
+          <li><a href="#">Mercredi</a></li>
+          <li><a href="#">Jeudi</a></li>
+          <li><a href="#">Vendredi</a></li>
+          <li><a href="#">Samedi</a></li>
+          <li><a href="#">Dimanche</a></li>
+        </ul>
+      </li>
+      <li>
+          <a href="#">Portfolio</a>
+      </li>
+      <li>
+          <a href="#">Contact</a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <!-- Page Content Holder -->
+  <div id="content">
+
+    <!-- Sidebar button -->
+    <div class="navbar navbar-default ">
+      <div class="container-fluid">
+      	<a id="sidebarCollapse"><span class="hyperspan"></span></a>
+      </div>
+    </div>
+
+    <!-- Map canvas -->
+    <div id="google-map"></div>
+  </div>
 </div>
 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+      $("#sidebarCollapse").click(function() {
+      if ( $("#sidebar").hasClass("inactive") ) {
+          $("#sidebar").removeClass("inactive");
+      } else {
+          $("#sidebar").addClass("inactive");
+          };
+      });
+    });</script>
+
+
 <script>
+ $(document).ready(function () {
+
+
+    // console.log("ceci est pos en dehors de sa maison", pos);
+
+    var pos;
+
     var myCoords = {lat: 48.86, lng: 2.34}
 
     var mapOptions = {
-    center: myCoords,
-    zoom: 14,
-    };
-    var map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+      center: myCoords,
+      zoom: 12.3,
+      disableDefaultUI: true,
+
+      styles: [
+                {
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#ffffff"
+                    }
+                  ]
+                },
+                {
+                  "elementType": "labels.text.stroke",
+                  "stylers": [
+                    {
+                      "color": "#000000"
+                    },
+                    {
+                      "lightness": 13
+                    }
+                  ]
+                },
+                {
+                  "featureType": "administrative",
+                  "elementType": "geometry.fill",
+                  "stylers": [
+                    {
+                      "color": "#000000"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "administrative",
+                  "elementType": "geometry.stroke",
+                  "stylers": [
+                    {
+                      "color": "#144b53"
+                    },
+                    {
+                      "lightness": 14
+                    },
+                    {
+                      "weight": 1.4
+                    }
+                  ]
+                },
+                {
+                  "featureType": "administrative",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#1ee7e4"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "administrative.land_parcel",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "landscape",
+                  "stylers": [
+                    {
+                      "color": "#08304b"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "landscape",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#fbf6f6"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "color": "#0c4152"
+                    },
+                    {
+                      "lightness": 5
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi",
+                  "elementType": "geometry.fill",
+                  "stylers": [
+                    {
+                      "color": "#084a69"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi",
+                  "elementType": "labels.text",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.medical",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.arterial",
+                  "elementType": "geometry.fill",
+                  "stylers": [
+                    {
+                      "color": "#000000"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.arterial",
+                  "elementType": "geometry.stroke",
+                  "stylers": [
+                    {
+                      "color": "#3a1738"
+                    },
+                    {
+                      "lightness": 15
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.arterial",
+                  "elementType": "labels.icon",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.highway",
+                  "elementType": "geometry.fill",
+                  "stylers": [
+                    {
+                      "color": "#000000"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.highway",
+                  "elementType": "geometry.stroke",
+                  "stylers": [
+                    {
+                      "color": "#0b434f"
+                    },
+                    {
+                      "lightness": 25
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.highway",
+                  "elementType": "labels.icon",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.local",
+                  "stylers": [
+                    {
+                      "color": "#ffe800"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.local",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "color": "#000000"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.local",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "transit",
+                  "stylers": [
+                    {
+                      "color": "#146474"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "water",
+                  "stylers": [
+                    {
+                      "color": "#021019"
+                    }
+                  ]
+                }
+                ]};
+
+var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+
+class MyPosition extends google.maps.OverlayView {
+
+    constructor (pos, map) {
+        super()
+        this.div = null
+        this.pos = pos
+        this.setMap(map)
+    }
+
+    onAdd () {
+        this.div = document.createElement('div')
+        this.div.classList.add('pulse')
+        this.getPanes().overlayImage.appendChild(this.div)
+    }
+
+    draw () {
+        let position = this.getProjection().fromLatLngToDivPixel(this.pos)
+        this.div.style.left = position.x + "px"
+        this.div.style.top = position.y + "px"
+    }
+
+    onRemove () {
+        this.div.parentNode.removeChild(this.div)
+    }
+
+}
+
+// Try HTML5 geolocation
+if (navigator.geolocation) {
+navigator.geolocation.getCurrentPosition(function(position) {
+    var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    new MyPosition(pos, mymap);
+    mymap.setCenter(pos);
+     }, function() {
+    handleLocationError(true, MyPosition, mymap.getCenter());
+    });
+
+} else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, MyPosition, mymap.getCenter());
+}
+
+
+i = 0;
+var markers=[];
+var contents = [];
+var infowindows = [];
+    
+
+<% @shops.each do |shop| %>
+
+  <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
+
+    markers[i] = new google.maps.Marker({
+      position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
+      map: mymap,
+      title: '<%=shop.title%>'
+    });
+
+    markers[i].index = i;
+    contents[i] = "<div id=[i]>" + "<%=shop.adress%>" + "</div>";
+
+    infowindows[i] = new google.maps.InfoWindow({
+        content: contents[i],
+        maxWidth: 300
+    });
+
+    google.maps.event.addListener(markers[i], 'click', function() {
+        infowindows[this.index].open(mymap,markers[this.index]);
+        mymap.panTo(markers[this.index].getPosition());
+        // on click marker, reveal sidebar
+        if ( $("#sidebar").hasClass("inactive") ) {
+            $("#sidebar").removeClass("inactive");
+        };
+
+        // à faire : lien pour aller chercher toutes les infos du shop
+        document.getElementById("test").innerHTML = contents[i];
+
+        // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
+    });
+
+   <% end %>
+   i++;
+<% end %>
+
+
+});
+
+
 </script>
+

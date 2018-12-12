@@ -1,0 +1,203 @@
+
+/* ---------------------------------------------------
+    GLOBAL STYLE
+----------------------------------------------------- */
+
+.wrapper p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+.wrapper a, .wrapper a:hover, .wrapper a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+
+/* ---------------------------------------------------
+    SIDEBAR SHOW/HIDE
+----------------------------------------------------- */
+.wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    @media (min-width: 991px) {
+        display: flex;
+        flex-direction:row;
+    }
+}
+
+.wrapper #sidebar {
+    height: 65vh;
+    background-color: #537060;
+    color: #fff;
+    transition: all 0.4s;
+    overflow-x: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    border: 10px solid #051018;
+    margin-bottom: 10vh;
+    border-top-left-radius:2em;
+    border-top-right-radius:2em; 
+    @media (min-width: 991px) {
+        position: static;
+        min-width: 450px;
+        max-width: 450px;
+        height: 100vh;
+        border-radius:0;
+        background-color: #537060;
+        border-left: 10px solid #051018;
+        color: #fff;
+        transition: all 0.4s;
+        overflow-y: hidden;
+        overflow-x: none;
+        border-width: 0px;
+    }
+}
+
+
+.wrapper #sidebar.inactive {
+    bottom: -90vh;
+    @media (min-width: 991px) {
+        margin-left: -450px;
+    }
+}
+
+
+/* ---------------------------------------------------
+    INNER SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper #sidebar img {
+    width: 100%;
+    border-radius: 1em;
+}
+
+.wrapper #sidebar .sidebar-header {
+    width:100%;
+}
+
+.wrapper #sidebar ul.components {
+    padding: 40px 0;
+    border-bottom: 1px solid #537060;
+}
+
+.wrapper #sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+.wrapper #sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    &:hover {
+    color: #537060;
+    background: #fff;
+    }
+}
+
+.wrapper #sidebar ul li.inactive > a, .wrapper a[aria-expanded="true"] {
+    color: #fff;
+    background: #537060;
+}
+
+
+.wrapper a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.wrapper a[aria-expanded="false"]::before, .wrapper a[aria-expanded="true"]::before {
+    content: '\e259';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 0.6em;
+}
+
+.wrapper a[aria-expanded="true"]::before {
+    content: '\e260';
+}
+
+.wrapper ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #537060;
+}
+
+.wrapper .etat {
+    display: flex;
+    justify-content: space-between;;
+}
+
+.wrapper .etat h4{
+    color: #68E52D;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+.wrapper #content {
+    position: static;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s;
+    @media (min-width: 991px) {
+        width: 100%;
+        transition: all 0.3s;
+    }
+}
+
+#google-map {
+    width: 100%;
+    height: 92vh;
+    opacity: 1;
+}
+
+
+.wrapper .navbar {
+    background: #fff;
+    width:100%;
+    height: 10vh;
+    border: 10px solid black;
+    border-top-left-radius:2%;
+    border-top-right-radius: 2%; 
+    z-index: 90000;
+    background-color:white;
+    opacity: 0.5; 
+    bottom: 0;
+    position: fixed;        
+        @media (min-width: 991px) {
+            background: #fff;
+            width:70px;
+            height: 100%;
+            border: 10px solid #051018;
+            border-radius: 0;
+            z-index: 4000;
+            float: left;
+            background-color:white;
+            opacity: 0.5; 
+    }
+}
+
+.wrapper .hyperspan {
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    z-index:1;
+}
+
+button:focus {
+    outline: 0 !important;
+
+}
+

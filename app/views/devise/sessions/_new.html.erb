@@ -2,23 +2,21 @@
       <div class="modal-dialog">
         <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Log In</h5>
+                <h1 class="modal-title">Connectez-vous !</h1>
                 <button type="button" class="close" data-dismiss="modal">
                       <span>&times;</span>
                 </button>
               </div>
               <div class="modal-body">    
                 <div>
-                    <h1>Log In</h1>
-                    <br>
                     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                         <div class="wrap">
-                              <div class="field">
+                              <div class="form-group">
                                 <label for="email">Email</label>
-                                <%= f.email_field :email %>
+                                <%= f.email_field :email, autocomplete: "email" %>
                               </div>
                         
-                             <div class="field">
+                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <%= f.password_field :password, autocomplete: "off" %>
                               </div><br>
@@ -33,7 +31,7 @@
                               </div>
 
                             <div>
-                              <%= f.submit "Log in", class: 'btn btn-primary' %>
+                              <%= f.submit "Log in", class: 'btn btn-secondary' %>
                             </div> 
 
                             <div>
@@ -45,7 +43,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
         </div>
     </div>

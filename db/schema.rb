@@ -33,10 +33,12 @@ ActiveRecord::Schema.define(version: 2018_12_04_192242) do
 
   create_table "operating_hours", force: :cascade do |t|
     t.bigint "shop_id"
-    t.integer "day_of_week"
-    t.string "name_of_day"
+    t.integer "day"
     t.time "open"
     t.time "close"
+    t.boolean "close_soon"
+    t.datetime "valid_from"
+    t.datetime "valid_through"
     t.index ["shop_id"], name: "index_operating_hours_on_shop_id"
   end
 
@@ -44,7 +46,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_192242) do
     t.string "title"
     t.bigint "user_id"
     t.string "adress"
-    t.decimal "latitute"
+    t.decimal "latitude"
     t.decimal "longitude"
     t.boolean "tobacco"
     t.string "image_url"
