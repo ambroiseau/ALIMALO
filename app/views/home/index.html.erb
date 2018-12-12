@@ -341,7 +341,7 @@ var infowindows = [];
     contents[i] = "<div id=[i]>" + "<%=shop.adress%>" + "</div>";
 
     infowindows[i] = new google.maps.InfoWindow({
-        content: <%= link_to 'shop', shop_path(shop), remote: true %>,
+        content: "<%= shop.title %>", // "<%#= link_to 'shop', shop_path(shop), remote: true %>", (unexpected token true)
         maxWidth: 300
     });
 
