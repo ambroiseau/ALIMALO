@@ -1,83 +1,69 @@
 <div class="wrapper">
-            <!-- Sidebar Holder -->
-            <nav id="sidebar" class="inactive">
+  <!-- Sidebar CONTENT -->
+  <nav id="sidebar" class="inactive">
 
+    <div class="sidebar-header">
+        <%= image_tag ('alim.jpg') %>
+    </div>
 
+    <ul class="list-unstyled components">
+    	<div class="etat">
+    	  <h3 id="test">CHEZ OMAR</h3>
+        <h4>OUVERT</h4>
+      </div>
 
-                <div class="sidebar-header">
-                    <%= image_tag ('alim.jpg') %>
-                </div>
+      <li>
+      	nbr de km API
+        <a href="#">À Propos</a>
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Horaires</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+          <li><a href="#">Lundi</a></li>
+          <li><a href="#">Mardi</a></li>
+          <li><a href="#">Mercredi</a></li>
+          <li><a href="#">Jeudi</a></li>
+          <li><a href="#">Vendredi</a></li>
+          <li><a href="#">Samedi</a></li>
+          <li><a href="#">Dimanche</a></li>
+        </ul>
+      </li>
+      <li>
+          <a href="#">Portfolio</a>
+      </li>
+      <li>
+          <a href="#">Contact</a>
+      </li>
+    </ul>
 
+  </nav>
 
-                <ul class="list-unstyled components">
-                	<div class="etat">
-                	<h3 id="test">CHEZ OMAR</h3>
-                    <h4>OUVERT</h4>
-                </div>
+  <!-- Page Content Holder -->
+  <div id="content">
 
-                    <li>
-                    	nbr de km
+    <!-- Sidebar button -->
+    <div class="navbar navbar-default ">
+      <div class="container-fluid">
+      	<a id="sidebarCollapse"><span class="hyperspan"></span></a>
+      </div>
+    </div>
 
-                        <a href="#">À Propos</a>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Horaires</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="#">Lundi</a></li>
-                            <li><a href="#">Mardi</a></li>
-                            <li><a href="#">Mercredi</a></li>
-                            <li><a href="#">Jeudi</a></li>
-                            <li><a href="#">Vendredi</a></li>
-                            <li><a href="#">Samedi</a></li>
-                            <li><a href="#">Dimanche</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-
-            </nav>
-
-            <!-- Page Content Holder -->
-            <div id="content">
-
-                <!-- Map canvas -->
-
-                <div class="navbar navbar-default ">
-                    <div class="container-fluid">
-                    	<a id="sidebarCollapse"><span class="hyperspan"></span></a>
-                     </div>
-                </div>
-                <%= render 'shared/pulse' %>
-                <div id="google-map"></div>
-
-
-            </div>
-
-         </div>
-     </div>
+    <!-- Map canvas -->
+    <div id="pulse"></div>
+    <div id="google-map"></div>
+  </div>
+</div>
 
 
 <script type="text/javascript">
     $(document).ready(function () {
 
       $("#sidebarCollapse").click(function() {
-          console.log("AZEZAEZAEAZEAZEAZEAZEAZEAZE");
-
       if ( $("#sidebar").hasClass("inactive") ) {
           $("#sidebar").removeClass("inactive");
-          console.log("Show")
       } else {
-          console.log("Hide")
           $("#sidebar").addClass("inactive");
-
-      };
-  });
-
-});
-</script>
+          };
+      });
+    });</script>
 
 
 <script>
@@ -308,89 +294,117 @@
       }
     ]
   }
-]
+  ]};
+
+
+
+var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+
+
+
+
+
+
+
+infoWindow = new google.maps.InfoWindow;
+
+// Try HTML5 geolocation
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+    var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
     };
 
+    infoWindow.setPosition(pos);
+    infoWindow.open(mymap);
+    mymap.setCenter(pos);
+    }, function() {
+    handleLocationError(true, infoWindow, mymap.getCenter());
+    });
 
-    var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+} else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, mymap.getCenter());
+}
 
-    infoWindow = new google.maps.InfoWindow;
+
+i = 0;
+var markers=[];
+var contents = [];
+var infowindows = [];
     
-    // Try HTML5 geolocation
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
+
+<% @shops.each do |shop| %>
+
+  <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
+
+    markers[i] = new google.maps.Marker({
+      position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
+      map: mymap,
+      title: '<%=shop.title%>'
+    });
+
+    markers[i].index = i;
+    contents[i] = "<div id=[i]>" + "<%=shop.adress%>" + "</div>";
+
+    infowindows[i] = new google.maps.InfoWindow({
+        content: contents[i],
+        maxWidth: 300
+    });
+
+    google.maps.event.addListener(markers[i], 'click', function() {
+        infowindows[this.index].open(mymap,markers[this.index]);
+        mymap.panTo(markers[this.index].getPosition());
+        // on click marker, reveal sidebar
+        if ( $("#sidebar").hasClass("inactive") ) {
+            $("#sidebar").removeClass("inactive");
         };
 
-        infoWindow.setPosition(pos);
-        infoWindow.open(mymap);
-        mymap.setCenter(pos);
-        }, function() {
-        handleLocationError(true, infoWindow, mymap.getCenter());
-        });
+        // à faire : lien pour aller chercher toutes les infos du shop
+        document.getElementById("test").innerHTML = contents[i];
 
-    } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, mymap.getCenter());
+        // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
+    });
+
+   <% end %>
+   i++;
+<% end %>
+
+var transitLayer = new google.map.TransitLayer();
+    transitLayer.setMap(map);});
+
+
+class MyMarker extends google.maps.OverlayView {
+    constructor (pos, map, price){
+        super()
+        this.setMap(map)
+        this.price = price
+        this.pos = pos
+    } 
+
+    onAdd(){
+        this.div = document.createElement('div')
+        this.div.style.position = 'absolute'
+        this.div.innerHTML = this.price
+        let panes = this.getPanes()
+        debugger
+        panes.overlayImage.appendChild(this.div)
+
     }
 
+  draw () {
 
-    i = 0;
-    var markers=[];
-    var contents = [];
-    var infowindows = [];
-    var myMarker = {
-		icon: 'mymarker.png'
-	};
+  }
 
-    <% @shops.each do |shop| %>
+  onRemove() {
 
-      <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
+  }
 
-        markers[i] = new google.maps.Marker({
-          position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
-          map: mymap,
-          title: '<%=shop.title%>'
-        });
+}
 
-        markers[i].index = i;
-        contents[i] = "<div id=[i]>" + "<%=shop.adress%>" + "</div>";
-
-        infowindows[i] = new google.maps.InfoWindow({
-            content: contents[i],
-            maxWidth: 300
-        });
-
-        google.maps.event.addListener(markers[i], 'click', function() {
-            infowindows[this.index].open(mymap,markers[this.index]);
-            mymap.panTo(markers[this.index].getPosition());
+new MyMarker(center, mymap, '100$')
 
 
-            // on click marker, reveal sidebar
-            if ( $("#sidebar").hasClass("inactive") ) {
-                $("#sidebar").removeClass("inactive");
-                console.log("Show")
-            };
-
-
-            // à faire : lien pour aller chercher toutes les infos du shop
-            document.getElementById("test").innerHTML = contents[i];
-
-
-            
-            // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
-
-
-        });
-
-       <% end %>
-       i++;
-    <% end %>
-
-    var  transitLayer = new google.map.TransitLayer();
-    transitLayer.setMap(map);
-});
 </script>
 
