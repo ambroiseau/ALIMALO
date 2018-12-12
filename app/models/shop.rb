@@ -6,9 +6,9 @@ class Shop < ApplicationRecord
   after_validation :geocode
 	validates :title, presence: true
 validates :adress, presence: true
-validates :longitude, presence: true
-validates :latitude, presence: true
-validates :tobacco, presence: true
+# validates :longitude, presence: true
+# validates :latitude, presence: true
+# validates :tobacco, presence: true
 	def open?
 		@time = Time.now.to_formatted_s(:time)
 		#Recupere le numero du jour actuel
