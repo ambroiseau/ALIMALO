@@ -67,358 +67,302 @@
 
 <script>
  $(document).ready(function () {
+
+
+    // console.log("ceci est pos en dehors de sa maison", pos);
+
+    var pos;
+
     var myCoords = {lat: 48.86, lng: 2.34}
 
     var mapOptions = {
-    center: myCoords,
-    zoom: 11,
-    disableDefaultUI: true,
+      center: myCoords,
+      zoom: 11,
+      disableDefaultUI: true,
 
-    styles: [
-  {
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#ffffff"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#000000"
-      },
-      {
-        "lightness": 13
-      }
-    ]
-  },
-  {
-    "featureType": "administrative",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#000000"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#144b53"
-      },
-      {
-        "lightness": 14
-      },
-      {
-        "weight": 1.4
-      }
-    ]
-  },
-  {
-    "featureType": "administrative",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#1ee7e4"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "labels",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape",
-    "stylers": [
-      {
-        "color": "#08304b"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#fbf6f6"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#0c4152"
-      },
-      {
-        "lightness": 5
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#084a69"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "labels.text",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.medical",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "road.arterial",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#000000"
-      }
-    ]
-  },
-  {
-    "featureType": "road.arterial",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#3a1738"
-      },
-      {
-        "lightness": 15
-      }
-    ]
-  },
-  {
-    "featureType": "road.arterial",
-    "elementType": "labels.icon",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#000000"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#0b434f"
-      },
-      {
-        "lightness": 25
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "labels.icon",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "road.local",
-    "stylers": [
-      {
-        "color": "#ffe800"
-      }
-    ]
-  },
-  {
-    "featureType": "road.local",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#000000"
-      }
-    ]
-  },
-  {
-    "featureType": "road.local",
-    "elementType": "labels",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "transit",
-    "stylers": [
-      {
-        "color": "#146474"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "stylers": [
-      {
-        "color": "#021019"
-      }
-    ]
-  }
-  ]};
+      styles: [
+                {
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#ffffff"
+                    }
+                  ]
+                },
+                {
+                  "elementType": "labels.text.stroke",
+                  "stylers": [
+                    {
+                      "color": "#000000"
+                    },
+                    {
+                      "lightness": 13
+                    }
+                  ]
+                },
+                {
+                  "featureType": "administrative",
+                  "elementType": "geometry.fill",
+                  "stylers": [
+                    {
+                      "color": "#000000"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "administrative",
+                  "elementType": "geometry.stroke",
+                  "stylers": [
+                    {
+                      "color": "#144b53"
+                    },
+                    {
+                      "lightness": 14
+                    },
+                    {
+                      "weight": 1.4
+                    }
+                  ]
+                },
+                {
+                  "featureType": "administrative",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#1ee7e4"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "administrative.land_parcel",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "landscape",
+                  "stylers": [
+                    {
+                      "color": "#08304b"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "landscape",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "color": "#fbf6f6"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "color": "#0c4152"
+                    },
+                    {
+                      "lightness": 5
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi",
+                  "elementType": "geometry.fill",
+                  "stylers": [
+                    {
+                      "color": "#084a69"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi",
+                  "elementType": "labels.text",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.medical",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.arterial",
+                  "elementType": "geometry.fill",
+                  "stylers": [
+                    {
+                      "color": "#000000"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.arterial",
+                  "elementType": "geometry.stroke",
+                  "stylers": [
+                    {
+                      "color": "#3a1738"
+                    },
+                    {
+                      "lightness": 15
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.arterial",
+                  "elementType": "labels.icon",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.highway",
+                  "elementType": "geometry.fill",
+                  "stylers": [
+                    {
+                      "color": "#000000"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.highway",
+                  "elementType": "geometry.stroke",
+                  "stylers": [
+                    {
+                      "color": "#0b434f"
+                    },
+                    {
+                      "lightness": 25
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.highway",
+                  "elementType": "labels.icon",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.local",
+                  "stylers": [
+                    {
+                      "color": "#ffe800"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.local",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "color": "#000000"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.local",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "transit",
+                  "stylers": [
+                    {
+                      "color": "#146474"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "water",
+                  "stylers": [
+                    {
+                      "color": "#021019"
+                    }
+                  ]
+                }
+                ]};
 
 var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
-var pos = [];
-let center = new google.maps.LatLng
 
-navigator.geolocation.getCurrentPosition(function(position) {
-    var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-    };
 
-    // infoWindow.setPosition(pos);
-    // infoWindow.open(mymap);
-    // mymap.setCenter(pos);
-    // }, function() {
-    // handleLocationError(true, infoWindow, mymap.getCenter());
-    // });
-});
+class TextMarker extends google.maps.OverlayView {
 
-      /** @constructor */
-
-// var myMarker = new google.maps.OverlayView();
-
-// function myMarker()
-
-class MyMarker extends google.maps.OverlayView {
-    constructor (position, map){
+    constructor (pos, map, text) {
         super()
-        this.setMap(mymap)
-        this.position = pos
-    } 
+        this.div = null
+        this.pos = pos
+        this.text = text
+        this.setMap(map)
+    }
 
-    onAdd(){
+    onAdd () {
         this.div = document.createElement('div')
-        this.div.classList.add('pulse')
-        let panes = this.getPanes()
-        panes.overlayImage.appendChild(this.div)
-
+        this.div.classList.add('marker')
+        this.div.style.position = 'absolute'
+        this.div.innerHTML = this.text
+        this.getPanes().overlayImage.appendChild(this.div)
     }
 
     draw () {
-        let overlayProjection = this.getProjection()
-        let position = overlayProjection.fromLatLngToDivPixel(this.pos)
-        // this.div.style.left = position.x + "px"
-        // this.div.style.top = position.y + "px"
-
+        let position = this.getProjection().fromLatLngToDivPixel(this.pos)
+        this.div.style.left = position.x + "px"
+        this.div.style.top = position.y + "px"
     }
 
-    onRemove() {
-      this.div.parentNode.removeChild(this.div)
+    onRemove () {
+        this.div.parentNode.removeChild(this.div)
     }
 
-};
-new MyMarker(pos, mymap);
-
-});
-
-/*
-infoWindow = new google.maps.InfoWindow;
-
-// Try HTML5 geolocation
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-    var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-    };
-
-    infoWindow.setPosition(pos);
-    infoWindow.open(mymap);
-    mymap.setCenter(pos);
-    }, function() {
-    handleLocationError(true, infoWindow, mymap.getCenter());
-    });
-
-} else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, mymap.getCenter());
 }
 
 
-
-
-i = 0;
-var markers=[];
-var contents = [];
-var infowindows = [];
-    
-
-<% @shops.each do |shop| %>
-
-  <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
-
-    markers[i] = new google.maps.Marker({
-      position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
-      map: mymap,
-      title: '<%=shop.title%>'
-    });
-
-    markers[i].index = i;
-    contents[i] = "<div id=[i]>" + "<%=shop.adress%>" + "</div>";
-
-    infowindows[i] = new google.maps.InfoWindow({
-        content: contents[i],
-        maxWidth: 300
-    });
-
-    google.maps.event.addListener(markers[i], 'click', function() {
-        infowindows[this.index].open(mymap,markers[this.index]);
-        mymap.panTo(markers[this.index].getPosition());
-        // on click marker, reveal sidebar
-        if ( $("#sidebar").hasClass("inactive") ) {
-            $("#sidebar").removeClass("inactive");
+navigator.geolocation.getCurrentPosition(function(position) {
+    let pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
         };
+    console.log("ceci est pos", pos);
 
-        // à faire : lien pour aller chercher toutes les infos du shop
-        document.getElementById("test").innerHTML = contents[i];
+    var pos2 = {lat: 48.85, long: 2.29};
+    var pos3 = new google.maps.LatLng(48.85, 2.29);
+    var pos4 = new google.maps.LatLng(48, 2);
+    var pos5 = {lat: 48.85, lng: 2.29};
+    console.log("ceci est pos5 : ", pos5);
 
-        // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
-    });
+    new TextMarker(pos4, mymap, "hello");
 
-   <% end %>
-   i++;
-<% end %>
-*/
+
+});
+
+  // console.log("ceci est pos en dehors de sa maison", pos);
+
+
+
+
+
+
+
+}); // end document ready
+
 
 </script>
 
