@@ -279,14 +279,7 @@
       }
     ]
   },
-  {
-    "featureType": "transit",
-    "stylers": [
-      {
-        "color": "#146474"
-      }
-    ]
-  },
+ 
   {
     "featureType": "water",
     "stylers": [
@@ -298,11 +291,8 @@
   ]};
 
 
-
+// map initialization
 var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
-
-
-
 
 
 
@@ -330,7 +320,7 @@ if (navigator.geolocation) {
 }
 
 
-i = 0;
+i = 1;
 var markers=[];
 var contents = [];
 var infowindows = [];
@@ -350,13 +340,18 @@ var infowindows = [];
     contents[i] = "<div id=[i]>" + "<%=shop.adress%>" + "</div>";
 
     infowindows[i] = new google.maps.InfoWindow({
-        content: contents[i],
+        content: <%= link_to 'shop', shop_path(shop), remote: true %>,
         maxWidth: 300
     });
 
+
+    // wait for click on marker
     google.maps.event.addListener(markers[i], 'click', function() {
         infowindows[this.index].open(mymap,markers[this.index]);
+
+        // on click, center map on marker
         mymap.panTo(markers[this.index].getPosition());
+
         // on click marker, reveal sidebar
         if ( $("#sidebar").hasClass("inactive") ) {
             $("#sidebar").removeClass("inactive");
@@ -365,15 +360,20 @@ var infowindows = [];
         // à faire : lien pour aller chercher toutes les infos du shop
         document.getElementById("test").innerHTML = contents[i];
 
-        // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
+        console.log("ceci est i :", i);
+        console.log("ceci est this.index", this.index);
+
+        console.log("ceci est shop.id", <%= shop.id %>);
+
+        console.log("<%= j link_to 'shop', shop_path(shop), remote: true %>");
+
+        <%#= link_to 'shop', shop_path(shop), remote: true %>
     });
 
    <% end %>
    i++;
 <% end %>
 
-var transitLayer = new google.map.TransitLayer();
-    transitLayer.setMap(map);});
 
 
 class MyMarker extends google.maps.OverlayView {
@@ -404,8 +404,9 @@ class MyMarker extends google.maps.OverlayView {
 
 }
 
-new MyMarker(center, mymap, '100$')
+// new MyMarker(center, mymap, '100$')
 
+});
 
 </script>
 
