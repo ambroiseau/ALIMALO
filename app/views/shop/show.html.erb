@@ -17,3 +17,13 @@
 <br>
 <p> <em>Si tu es le proprio:</em> </p>
 <h4><%= link_to "edit les horraires", shop_operating_hours_path(params[:id]) %> </h4>
+
+<%= form_for @shop, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+	<%= f.file_field :frontpicture %>
+	<%= f.submit "Upload"%>
+<% end %>
+
+<%= @shop.frontpicture.attached? %>
+<% if @shop.frontpicture.attached?  %>
+	<%= image_tag @shop.frontpicture.variant(resize: "10%") %>
+<% end %>

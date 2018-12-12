@@ -5,7 +5,7 @@ class Shop < ApplicationRecord
 	geocoded_by :adress
   after_validation :geocode
 
-  has_one_attached :front_picture
+  has_one_attached :frontpicture
   has_many_attached :pictures
 
 	validates :title, presence: true
