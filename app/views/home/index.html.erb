@@ -47,7 +47,6 @@
     </div>
 
     <!-- Map canvas -->
-    <div id="pulse"></div>
     <div id="google-map"></div>
   </div>
 </div>
@@ -72,7 +71,7 @@
 
     var mapOptions = {
     center: myCoords,
-    zoom: 12,
+    zoom: 11,
     disableDefaultUI: true,
 
     styles: [
@@ -296,16 +295,62 @@
   }
   ]};
 
-
-
 var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+var pos = [];
+let center = new google.maps.LatLng
 
+navigator.geolocation.getCurrentPosition(function(position) {
+    var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+    };
 
+    // infoWindow.setPosition(pos);
+    // infoWindow.open(mymap);
+    // mymap.setCenter(pos);
+    // }, function() {
+    // handleLocationError(true, infoWindow, mymap.getCenter());
+    // });
+});
 
+      /** @constructor */
 
+// var myMarker = new google.maps.OverlayView();
 
+// function myMarker()
 
+class MyMarker extends google.maps.OverlayView {
+    constructor (position, map){
+        super()
+        this.setMap(mymap)
+        this.position = pos
+    } 
 
+    onAdd(){
+        this.div = document.createElement('div')
+        this.div.classList.add('pulse')
+        let panes = this.getPanes()
+        panes.overlayImage.appendChild(this.div)
+
+    }
+
+    draw () {
+        let overlayProjection = this.getProjection()
+        let position = overlayProjection.fromLatLngToDivPixel(this.pos)
+        // this.div.style.left = position.x + "px"
+        // this.div.style.top = position.y + "px"
+
+    }
+
+    onRemove() {
+      this.div.parentNode.removeChild(this.div)
+    }
+
+};
+
+});
+
+/*
 infoWindow = new google.maps.InfoWindow;
 
 // Try HTML5 geolocation
@@ -327,6 +372,8 @@ if (navigator.geolocation) {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, mymap.getCenter());
 }
+
+
 
 
 i = 0;
@@ -370,41 +417,7 @@ var infowindows = [];
    <% end %>
    i++;
 <% end %>
-
-var transitLayer = new google.map.TransitLayer();
-    transitLayer.setMap(map);});
-
-
-class MyMarker extends google.maps.OverlayView {
-    constructor (pos, map, price){
-        super()
-        this.setMap(map)
-        this.price = price
-        this.pos = pos
-    } 
-
-    onAdd(){
-        this.div = document.createElement('div')
-        this.div.style.position = 'absolute'
-        this.div.innerHTML = this.price
-        let panes = this.getPanes()
-        debugger
-        panes.overlayImage.appendChild(this.div)
-
-    }
-
-  draw () {
-
-  }
-
-  onRemove() {
-
-  }
-
-}
-
-new MyMarker(center, mymap, '100$')
-
+*/
 
 </script>
 
