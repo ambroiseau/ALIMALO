@@ -1,4 +1,4 @@
-#pulse {
+.pulse {
   display: block;
   position:absolute;
   width: 15px;
@@ -10,7 +10,7 @@
   box-shadow: 0 0 0 rgba(204,169,44, 0.4);
   animation: pulse 2s infinite;
 }
-#pulse:hover {
+.pulse:hover {
   animation: none;
 }
 
