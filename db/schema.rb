@@ -57,6 +57,10 @@ ActiveRecord::Schema.define(version: 2018_12_10_141709) do
     t.integer "day"
     t.time "open"
     t.time "close"
+<<<<<<< HEAD
+=======
+    t.boolean "close_soon"
+>>>>>>> development
     t.datetime "valid_from"
     t.datetime "valid_through"
     t.index ["shop_id"], name: "index_operating_hours_on_shop_id"
@@ -65,7 +69,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_141709) do
   create_table "shops", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id"
-    t.string "address"
+    t.string "adress"
     t.decimal "latitude"
     t.decimal "longitude"
     t.boolean "tobacco"

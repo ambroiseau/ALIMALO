@@ -1,19 +1,20 @@
 <div class="wrapper">
             <!-- Sidebar Holder -->
-            <nav id="sidebar">
+            <nav id="sidebar" class="inactive">
+
 
 
                 <div class="sidebar-header">
-                    <%= image_tag ('alim.jpg'), style:"width: 400px;" %>
+                    <%= image_tag ('alim.jpg') %>
                 </div>
 
 
                 <ul class="list-unstyled components">
                 	<div class="etat">
-                	<h3>CHEZ OMAR</h3>
+                	<h3 id="test">CHEZ OMAR</h3>
                     <h4>OUVERT</h4>
                 </div>
-                    
+
                     <li>
                     	nbr de km
 
@@ -46,10 +47,10 @@
 
                 <div class="navbar navbar-default ">
                     <div class="container-fluid">
-                    	<button id="sidebarCollapse"><span class="hyperspan"></button></a>
+                    	<a id="sidebarCollapse"><span class="hyperspan"></span></a>
                      </div>
                 </div>
-                
+                <%= render 'shared/pulse' %>
                 <div id="google-map"></div>
 
 
@@ -59,19 +60,27 @@
      </div>
 
 
+<script type="text/javascript">
+    $(document).ready(function () {
 
-<!-- jQuery CDN -->
- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+      $("#sidebarCollapse").click(function() {
+          console.log("AZEZAEZAEAZEAZEAZEAZEAZEAZE");
 
- <script type="text/javascript">
-     $(document).ready(function () {
-         $('#sidebarCollapse').on('click', function () {
-             $('#sidebar').toggleClass('active');
-         });
-     });
- </script>
+      if ( $("#sidebar").hasClass("inactive") ) {
+          $("#sidebar").removeClass("inactive");
+          console.log("Show")
+      } else {
+          console.log("Hide")
+          $("#sidebar").addClass("inactive");
 
- <script>
+      };
+  });
+
+});
+</script>
+
+
+<script>
  $(document).ready(function () {
     var myCoords = {lat: 48.86, lng: 2.34}
 
@@ -299,14 +308,14 @@
       }
     ]
   }
-] 
+]
     };
 
 
     var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 
     infoWindow = new google.maps.InfoWindow;
-
+    
     // Try HTML5 geolocation
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -316,7 +325,6 @@
         };
 
         infoWindow.setPosition(pos);
-        infoWindow.setContent("Vous êtes ici!");
         infoWindow.open(mymap);
         mymap.setCenter(pos);
         }, function() {
@@ -329,14 +337,60 @@
     }
 
 
+    i = 0;
+    var markers=[];
+    var contents = [];
+    var infowindows = [];
+    var myMarker = {
+		icon: 'mymarker.png'
+	};
+
     <% @shops.each do |shop| %>
-       <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
-         new google.maps.Marker({
-         position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
-         map: mymap,
-         title: '<%=shop.title%>',
-         });
+
+      <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
+
+        markers[i] = new google.maps.Marker({
+          position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
+          map: mymap,
+          title: '<%=shop.title%>'
+        });
+
+        markers[i].index = i;
+        contents[i] = "<div id=[i]>" + "<%=shop.adress%>" + "</div>";
+
+        infowindows[i] = new google.maps.InfoWindow({
+            content: contents[i],
+            maxWidth: 300
+        });
+
+        google.maps.event.addListener(markers[i], 'click', function() {
+            infowindows[this.index].open(mymap,markers[this.index]);
+            mymap.panTo(markers[this.index].getPosition());
+
+
+            // on click marker, reveal sidebar
+            if ( $("#sidebar").hasClass("inactive") ) {
+                $("#sidebar").removeClass("inactive");
+                console.log("Show")
+            };
+
+
+            // à faire : lien pour aller chercher toutes les infos du shop
+            document.getElementById("test").innerHTML = contents[i];
+
+
+            
+            // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
+
+
+        });
+
        <% end %>
-    <% end %>    
+       i++;
+    <% end %>
+
+    var  transitLayer = new google.map.TransitLayer();
+    transitLayer.setMap(map);
 });
 </script>
+

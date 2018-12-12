@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all'%>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDj0Fc9HAMlqJi5YeIkrGkVLPp2GOm_8r8" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -16,13 +17,13 @@
   <body>
     
     <%= render "shared/navbar" %>
+
     <%= yield %>
-    <%= render "shared/alert" %>
     <% unless user_signed_in? %>
       <%= render partial: 'devise/registrations/new' %>
       <%= render partial: 'devise/sessions/new' %>
     <% end %>
-
+    <%= render "shared/alert" %>
     <%= render "shared/footer" %>
 
     

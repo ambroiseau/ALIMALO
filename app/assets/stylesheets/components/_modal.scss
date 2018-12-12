@@ -1,11 +1,13 @@
-#signUpModal {
-  background-color: #669999;
+#signUpModal, #logInModal {
+	margin-top: 70px;
 }
 
 .modal-header  {
   background-color: #D8D846;
-  display: flex;
-  left: 50%;
-  text-align: center;
+}
+
+.modal-content {
+	border: 15px solid #051018;
+	border-radius: 1em;
 
 }
