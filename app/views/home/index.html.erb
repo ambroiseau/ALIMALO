@@ -325,7 +325,8 @@ var markers=[];
 var contents = [];
 var infowindows = [];
     
-
+// markers loop : for each shop in database, put marker on map.
+// add event listener for actions depending on which marker is clicked
 <% @shops.each do |shop| %>
 
   <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
