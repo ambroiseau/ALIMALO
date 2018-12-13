@@ -11,6 +11,8 @@
           <h3 id="shop"></h3>
 			</div>
           <h3 id="open"></h3>
+        <h3 id="open_hour"></h3>
+      	<h3 id="close_hour"></h3>
 
       <li>
         nbr de km API?
@@ -22,8 +24,6 @@
         <div id="picture">Picture ici : </div>
 
         <ul class="collapse list-unstyled" id="pageSubmenu">
-        <li id="open_hour"></li>
-      	<li id="close_hour"></li>
         </ul>
       </li>
       <li>
@@ -381,7 +381,6 @@ var infowindows = [];
         console.log("ceci est this.index", this.index);
 
         // à faire : lien pour aller chercher toutes les infos du shop
-<<<<<<< HEAD
         document.getElementById("shop").innerHTML = "<%=shop.title%>";
 				<%if shop.open? %>
         document.getElementById("open").innerHTML = "OUVERT";
@@ -396,18 +395,6 @@ var infowindows = [];
         document.getElementById("close_hour").innerHTML = "<%= string[10..15]%>";
 				<%end%>
         
-=======
-        // document.getElementById("open").innerHTML = <%#= shop.id.open? %>;
-        document.getElementById("adress").innerHTML += "<%= shop.adress %>";
-
-        document.getElementById("picture").innerHTML += "<%= shop.image_url %>";
-        
-        //this.index
-
-        document.getElementById("hour").innerHTML += " <%= shop.operating_hours%>";
-
-        // document.getElementById("hour").innerHTML += " <%#= j render 'hour', caca: this.index %>";
->>>>>>> development
 
         
           
