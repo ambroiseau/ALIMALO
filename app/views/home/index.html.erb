@@ -19,6 +19,8 @@
 
         <div id="hour">Les horaires ici : </div>
 
+        <div id="picture">Picture ici : </div>
+
         <ul class="collapse list-unstyled" id="pageSubmenu">
           <li><a href="#">Lundi</a></li>
           <li><a href="#">Mardi</a></li>
@@ -381,6 +383,8 @@ var infowindows = [];
         // à faire : lien pour aller chercher toutes les infos du shop
         // document.getElementById("open").innerHTML = <%#= shop.id.open? %>;
         document.getElementById("adress").innerHTML += "<%= shop.adress %>";
+
+        document.getElementById("picture").innerHTML += "<%= shop.image_url %>";
         
         //this.index
 
