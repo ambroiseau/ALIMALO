@@ -1,3 +1,5 @@
+<% if current_user != nil %>
+<% if current_user.id == @shop.user_id %>
 <div class="jumbotron jumbotron-fluid">
 	<div class="container">
 		<h3><%= @shop.title%></h3>
@@ -25,9 +27,16 @@
 		<%= f.submit "Upload"%>
 		<% end %>
 
-		<%= @shop.frontpicture.attached? %>
-		<% if @shop.frontpicture.attached?  %>
-		<%= image_tag @shop.frontpicture.variant(resize: "10%") %>
-		<% end %>
+<%= @shop.frontpicture.attached? %>
+<% if @shop.frontpicture.attached?  %>
+	<%= image_tag @shop.frontpicture.variant(resize: "10%") %>
+<% end %>
 	</div>
 </div>
+
+<% else %>
+Cette page n'est accessible qu'à son propriétaire
+<% end %>
+<% else %>
+Cette page n'est accessible qu'à son propriétaire
+<% end %>
