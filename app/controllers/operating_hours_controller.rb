@@ -12,6 +12,7 @@ class OperatingHoursController < ApplicationController
 	def update
 		id_shop= params[:shop_id]
  		@hour.update_attributes(hours_params)
+	
 	end
 
 private

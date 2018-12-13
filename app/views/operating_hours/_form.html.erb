@@ -1,6 +1,5 @@
-<%= form_for @hour, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+<%= form_for @hour, url: {action: "update"}, html: {class: "nifty_form"}, remote: true do |f| %>
   <%= f.time_field :open%>
   <%= f.time_field :close %>
 	<%= f.submit "Update" %>
 	<%end%>
-
