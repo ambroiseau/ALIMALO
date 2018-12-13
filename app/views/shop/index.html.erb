@@ -1,8 +1,9 @@
 <div class="container">
   <div class="jumbotron">
-      <h2>LES ALIMENTATIONS GÉNÉRALES PRÈS DE CHEZ VOUS</h2>
-        <div class="list-alim">   
+		<h2>LES ALIMENTATIONS GÉNÉRALES PRÈS DE CHEZ VOUS</h2>
+		 	<div class="list-alim">   
 
+     <% @shops.each do |shop|%>
       <ul class="list-unstyled">
         <li class="product">
 
@@ -10,17 +11,24 @@
             <i class="fa fa-caret-up"></i>
             <p>1 KM</p>
           </div>
-
-          <img src="http://unsplash.it/200/120/?random" alt="" class="product-image img-rounded">
+					
+          <img src="<%=shop[:image_url]%>" alt="" class="product-image img-rounded">
 
           <div class="product-description">
-            <h3>NOM DE L'ÉPICIER</h3>
-            <p>ADRESSE DANS PANAM</p>
-            <p>VA BIENTOT FERMER</p>
+            <h3><%= shop.title%></h3>
+            <p><%= shop.adress%></p>
+						<%if shop.open? %>
+							<p>OUVERT</p>
+						<%else%>
+							<p> FERMEE </p>
+						<%end%>
+						<% if shop.open? && shop[:close_soon == true ] %>
+							<p> VA BIENTOT FERMER </p>
+						<% end %>
           </div>
         </li>
       </ul>
-      
+     <%end%> 
     </div>
   </div>
 </div>
