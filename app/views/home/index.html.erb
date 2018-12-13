@@ -1,3 +1,7 @@
+<script type="text/javascript" language="javascript">
+   confirm("notre site utilise des cookies. si vous voulez voir ")
+
+</script>
 <div class="wrapper">
   <!-- Sidebar CONTENT -->
   <nav id="sidebar" class="inactive">
@@ -279,7 +283,7 @@
       }
     ]
   },
- 
+
   {
     "featureType": "water",
     "stylers": [
@@ -324,7 +328,7 @@ i = 1;
 var markers=[];
 var contents = [];
 var infowindows = [];
-    
+
 // markers loop : for each shop in database, put marker on map.
 // add event listener for actions depending on which marker is clicked
 <% @shops.each do |shop| %>
@@ -383,7 +387,7 @@ class MyMarker extends google.maps.OverlayView {
         this.setMap(map)
         this.price = price
         this.pos = pos
-    } 
+    }
 
     onAdd(){
         this.div = document.createElement('div')
@@ -410,4 +414,3 @@ class MyMarker extends google.maps.OverlayView {
 });
 
 </script>
-
