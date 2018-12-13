@@ -1,4 +1,7 @@
-//
+//= require jquery3
+//= require turbolinks
+//= require moment
+//= require jquery_ujs
 //= require bootstrap.min
 //= require jquery-3.3.1.min
 //= require popper.min

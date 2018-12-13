@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_141709) do
+
+ActiveRecord::Schema.define(version: 2018_12_13_000538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_141709) do
     t.boolean "close_soon"
     t.datetime "valid_from"
     t.datetime "valid_through"
+    t.string "name_of_day"
     t.index ["shop_id"], name: "index_operating_hours_on_shop_id"
   end
 
