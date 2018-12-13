@@ -14,6 +14,8 @@
 .wrapper a, .wrapper a:hover, .wrapper a:focus {
     color: inherit;
     text-decoration: none;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -22,11 +24,21 @@
     SIDEBAR SHOW/HIDE
 ----------------------------------------------------- */
 .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column-reverse;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
     @media (min-width: 991px) {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction:row;
+        -webkit-box-orient:horizontal;
+        -webkit-box-direction:normal;
+            -ms-flex-direction:row;
+                flex-direction:row;
     }
 }
 
@@ -34,6 +46,8 @@
     height: 65vh;
     background-color: #537060;
     color: #fff;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
     transition: all 0.4s;
     overflow-x: hidden;
     position: fixed;
@@ -53,6 +67,8 @@
         background-color: #537060;
         border-left: 10px solid #051018;
         color: #fff;
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
         transition: all 0.4s;
         overflow-y: hidden;
         overflow-x: none;
@@ -132,8 +148,12 @@
 }
 
 .wrapper .etat {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;;
 }
 
 .wrapper .etat h4{
@@ -148,9 +168,13 @@
     position: static;
     width: 100%;
     height: 100%;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
     transition: all 0.3s;
     @media (min-width: 991px) {
         width: 100%;
+        -webkit-transition: all 0.3s;
+        -o-transition: all 0.3s;
         transition: all 0.3s;
     }
 }
@@ -159,6 +183,7 @@
     width: 100%;
     height: 92vh;
     opacity: 1;
+    position: relative;
 }
 
 
@@ -200,4 +225,3 @@ button:focus {
     outline: 0 !important;
 
 }
-

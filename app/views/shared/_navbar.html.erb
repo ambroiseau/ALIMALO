@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-default container-fluid pl-6">
   <div id="alimlogo">
-  <%= image_tag 'alimalo1.png', class:"navbar-brand" %>
-</div>
+    <a href"/"><%= image_tag 'alimalo1.png', class:"navbar-brand" %></a>
+  </div>
 
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,24 +13,14 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Alimentations Générales</a>
         <div class="dropdown-menu" aria-labelledby="navbarNavDropdown">
-          <a class="dropdown-item" href="#">LES ALIMS</a>
-          <a class="dropdown-item" href="#">LES PRODUITS</a>
-          <a class="dropdown-item" href="#">COLLECTION ALIM</a>
+          <a class="dropdown-item" href="shop/index">LES ALIMS</a>
           <a class="dropdown-item" href="#">MAGAZINE ALIM</a>
           <a class="dropdown-item" href="#">RADIO ALIM</a>
+          <a class="dropdown-item" href="#">L'ÉQUIPE ALIM_ALO</a>
+          <a class="dropdown-item" href="/home/confidential">POLITIQUE DE CONFIDENTIALITÉ</a>
         </div>
 
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">politique de confidentialité</a>
-        <div class="dropdown-menu" aria-labelledby="navbarNavDropdown">
-          <a class="dropdown-item" href="/home/confidential">english</a>
-          <a class="dropdown-item" href="#">NOTRE SOLUTION</a>
-          <a class="dropdown-item" href="#">L'ÉQUIPE</a>
-      </div>
-      </li>
-
-
-        <%if user_signed_in? %>
+      <%if user_signed_in? %>
 
           <li class="nav-item">
               <%=  link_to "Déconnexion", destroy_user_session_path, method: :delete, class:"nav-link" %>

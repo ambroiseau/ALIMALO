@@ -1,4 +1,4 @@
-
+<%@hours = @hours.sort_by { |h| h[:day]} %>
 <% @hours.each do |h| %>
 <li>
 	<%if h[:open] == nil %>

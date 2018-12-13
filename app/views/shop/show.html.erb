@@ -1,35 +1,39 @@
 <% if current_user != nil %>
 <% if current_user.id == @shop.user_id %>
-<h3><%= @shop.title%></h3>
-<br>
-<%= params %>
-<%= @shop.adress%>
-<br>
-<% @hours.map do |h| %>
-<br>
-	<%if h[:open] == nil %>
-		<p><em>fermée le <%=h[:name_of_day]%></em></p>
-	<%else%>
-		<% string = h[:open].to_s %>
-		Opening hour:<%= string[10..15] %>
-		<% string = h[:close].to_s %>
-		Closing hour:<%= string[10..15] %>
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h3><%= @shop.title%></h3>
+		<br>
+		<%= @shop.address%>
+		<br>
+		<% @hours.map do |h| %>
+		<br>
+			<%if h[:open] == nil %>
+				<p><em>fermée le <%=h[:name_of_day]%></em></p>
+			<%else%>
+				<% string = h[:open].to_s %>
+				Opening hour:<%= string[10..15] %>
+				<% string = h[:close].to_s %>
+				Closing hour:<%= string[10..15] %>
+				<%end%>
 		<%end%>
-<%end%>
-<br>
-<br>
-<p> <em>Si tu es le proprio:</em> </p>
-<h4><%= link_to "edit les horraires", shop_operating_hours_path(params[:id]) %> </h4>
+		<br>
+		<br>
+		<p> <em>Si tu es le proprio:</em> </p>
+		<h4><%= link_to "edit les horraires", shop_operating_hours_path(params[:id]) %> </h4>
 
-<%= form_for @shop, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
-	<%= f.file_field :frontpicture %>
-	<%= f.submit "Upload"%>
-<% end %>
+		<%= form_for @shop, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+		<%= f.file_field :frontpicture %>
+		<%= f.submit "Upload"%>
+		<% end %>
 
 <%= @shop.frontpicture.attached? %>
 <% if @shop.frontpicture.attached?  %>
 	<%= image_tag @shop.frontpicture.variant(resize: "10%") %>
 <% end %>
+	</div>
+</div>
+
 <% else %>
 Cette page n'est accessible qu'à son propriétaire
 <% end %>

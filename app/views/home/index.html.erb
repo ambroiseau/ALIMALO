@@ -51,7 +51,6 @@
   </div>
 </div>
 
-
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -314,6 +313,7 @@ class MyPosition extends google.maps.OverlayView {
 
     onAdd () {
         this.div = document.createElement('div')
+        this.div.style.position = 'absolute';
         this.div.classList.add('pulse')
         this.getPanes().overlayImage.appendChild(this.div)
     }
