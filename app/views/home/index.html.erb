@@ -8,22 +8,20 @@
 
     <ul class="list-unstyled components">
         <div class="etat">
-          <h3 id="test">CHEZ OMAR</h3>
-        <h4>OUVERT</h4>
+          <h3 id="title">CHEZ OMAR</h3>
+        <h4 id="open">OUVERT?</h4>
       </div>
 
       <li>
-        nbr de km API
-        <a href="#">À Propos</a>
+        nbr de km API?
+        <a href="#" id="adress">test ici :</a>
         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Horaires</a>
+
+        <div id="hour">Les horaires ici : </div>
+
         <ul class="collapse list-unstyled" id="pageSubmenu">
           <li><a href="#">Lundi</a></li>
           <li><a href="#">Mardi</a></li>
-          <li><a href="#">Mercredi</a></li>
-          <li><a href="#">Jeudi</a></li>
-          <li><a href="#">Vendredi</a></li>
-          <li><a href="#">Samedi</a></li>
-          <li><a href="#">Dimanche</a></li>
         </ul>
       </li>
       <li>
@@ -345,12 +343,13 @@ navigator.geolocation.getCurrentPosition(function(position) {
     handleLocationError(false, MyPosition, mymap.getCenter());
 }
 
-i = 0;
+i = 1;
 var markers=[];
 var contents = [];
 var infowindows = [];
     
 
+// loop to 1) display all markers 2) wait for click on markers (event listener) and return correct shop.id
 <% @shops.each do |shop| %>
 
   <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
@@ -358,11 +357,11 @@ var infowindows = [];
     markers[i] = new google.maps.Marker({
       position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
       map: mymap,
-      title: '<%=shop.title%>'
+      title: "<%= shop.id %>"
     });
 
-    markers[i].index = i;
-    contents[i] = "<div id=[i]>" + "<%=shop.adress%>" + "</div>";
+     markers[i].index = i;
+    // contents[i] = "<div id=[i]>" + "<%#=shop.adress%>" + "</div>";
 
     infowindows[i] = new google.maps.InfoWindow({
         content: contents[i],
@@ -377,9 +376,20 @@ var infowindows = [];
             $("#sidebar").removeClass("inactive");
         };
 
-        // à faire : lien pour aller chercher toutes les infos du shop
-        document.getElementById("test").innerHTML = contents[i];
+        console.log("ceci est this.index", this.index);
 
+        // à faire : lien pour aller chercher toutes les infos du shop
+        // document.getElementById("open").innerHTML = <%#= shop.id.open? %>;
+        document.getElementById("adress").innerHTML += "<%= shop.adress %>";
+        
+        //this.index
+
+        document.getElementById("hour").innerHTML += " <%= shop.operating_hours%>";
+
+        // document.getElementById("hour").innerHTML += " <%#= j render 'hour', caca: this.index %>";
+
+        
+          
         // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
     });
 
