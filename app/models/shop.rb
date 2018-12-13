@@ -4,8 +4,12 @@ class Shop < ApplicationRecord
 	has_many :operating_hours, dependent: :destroy
 	geocoded_by :adress
   after_validation :geocode
+
+  has_one_attached :frontpicture
+  has_many_attached :pictures
+
 	validates :title, presence: true
-validates :adress, presence: true
+	validates :adress, presence: true
 # validates :longitude, presence: true
 # validates :latitude, presence: true
 # validates :tobacco, presence: true

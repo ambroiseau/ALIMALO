@@ -4,6 +4,7 @@ class WelcomeMailer < Devise::Mailer
   default template_path: 'welcome_mailer' # to make sure that your mailer uses the devise views
   
   def confirmation_instructions(user, token, opts)
+    puts user_confirmation_url(@resource, confirmation_token: token)
     my_mail = Mailjet::Send.create(messages: [{
         'From'=> {
          'Email'=> Rails.application.credentials.default_email,
