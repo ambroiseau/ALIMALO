@@ -13,9 +13,14 @@
           <h3 id="open"></h3>
 
       <li>
-        nbr de km API
-        <a href="#">À Propos</a>
+        nbr de km API?
+        <a href="#" id="adress">test ici :</a>
         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Horaires</a>
+
+        <div id="hour">Les horaires ici : </div>
+
+        <div id="picture">Picture ici : </div>
+
         <ul class="collapse list-unstyled" id="pageSubmenu">
         <li id="open_hour"></li>
       	<li id="close_hour"></li>
@@ -340,12 +345,13 @@ navigator.geolocation.getCurrentPosition(function(position) {
     handleLocationError(false, MyPosition, mymap.getCenter());
 }
 
-i = 0;
+i = 1;
 var markers=[];
 var contents = [];
 var infowindows = [];
     
 
+// loop to 1) display all markers 2) wait for click on markers (event listener) and return correct shop.id
 <% @shops.each do |shop| %>
 
   <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
@@ -353,11 +359,11 @@ var infowindows = [];
     markers[i] = new google.maps.Marker({
       position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
       map: mymap,
-      title: '<%=shop.title%>'
+      title: "<%= shop.id %>"
     });
 
-    markers[i].index = i;
-    contents[i] = "<div id=[i]>" + "<%=shop.adress%>" + "</div>";
+     markers[i].index = i;
+    // contents[i] = "<div id=[i]>" + "<%#=shop.adress%>" + "</div>";
 
     infowindows[i] = new google.maps.InfoWindow({
         content: contents[i],
@@ -372,7 +378,10 @@ var infowindows = [];
             $("#sidebar").removeClass("inactive");
         };
 
+        console.log("ceci est this.index", this.index);
+
         // à faire : lien pour aller chercher toutes les infos du shop
+<<<<<<< HEAD
         document.getElementById("shop").innerHTML = "<%=shop.title%>";
 				<%if shop.open? %>
         document.getElementById("open").innerHTML = "OUVERT";
@@ -387,7 +396,21 @@ var infowindows = [];
         document.getElementById("close_hour").innerHTML = "<%= string[10..15]%>";
 				<%end%>
         
+=======
+        // document.getElementById("open").innerHTML = <%#= shop.id.open? %>;
+        document.getElementById("adress").innerHTML += "<%= shop.adress %>";
 
+        document.getElementById("picture").innerHTML += "<%= shop.image_url %>";
+        
+        //this.index
+
+        document.getElementById("hour").innerHTML += " <%= shop.operating_hours%>";
+
+        // document.getElementById("hour").innerHTML += " <%#= j render 'hour', caca: this.index %>";
+>>>>>>> development
+
+        
+          
         // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
     });
 
