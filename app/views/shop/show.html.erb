@@ -1,6 +1,9 @@
+<% if current_user != nil %>
+<% if current_user.id == @shop.user_id %>
 <h3><%= @shop.title%></h3>
 <br>
-<%= @shop.address%>
+<%= params %>
+<%= @shop.adress%>
 <br>
 <% @hours.map do |h| %>
 <br>
@@ -26,4 +29,10 @@
 <%= @shop.frontpicture.attached? %>
 <% if @shop.frontpicture.attached?  %>
 	<%= image_tag @shop.frontpicture.variant(resize: "10%") %>
+<% end %>
+<% else %>
+Cette page n'est accessible qu'à son propriétaire
+<% end %>
+<% else %>
+Cette page n'est accessible qu'à son propriétaire
 <% end %>
