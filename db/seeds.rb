@@ -28,7 +28,7 @@ shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '22:00', close
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 
-shop = Shop.create(title: '(name_of_day: Libre-service Italie', adress: '190 avenue d’Italie, Paris', tobacco: true)
+shop = Shop.create(title: 'Libre-service Italie', adress: '190 avenue d’Italie, Paris', tobacco: true)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mercredi', day: 3, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -44,7 +44,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '22:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
-shop = Shop.create(title: 'Tôt ou tard: épicerie libre-service', adress: '39 rue Letellier, Paris', tobacco: false)
+shop = Shop.create(title: 'Tôt ou tard épicerie libre-service', adress: '39 rue Letellier, Paris', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mercredi', day: 3, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
