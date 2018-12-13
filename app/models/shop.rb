@@ -4,7 +4,11 @@ class Shop < ApplicationRecord
 	has_many :operating_hours, dependent: :destroy
 	geocoded_by :adress
   after_validation :geocode
-
+	validates :title, presence: true
+validates :adress, presence: true
+# validates :longitude, presence: true
+# validates :latitude, presence: true
+# validates :tobacco, presence: true
 	def open?
 		@time = Time.now.to_formatted_s(:time)
 		#Recupere le numero du jour actuel
@@ -16,7 +20,7 @@ class Shop < ApplicationRecord
 
 		@open_time = @open[:open].to_formatted_s(:time)
 		@close_time = @open[:close].to_formatted_s(:time)
-		
+
 
 		if @open_time < @close_time
 			if @time >= @open_time && @time <= @close_time

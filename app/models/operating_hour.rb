@@ -4,4 +4,3 @@ class OperatingHour < ApplicationRecord
 	validates_inclusion_of :day, :in => 1..7
 
 end
-

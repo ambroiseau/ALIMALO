@@ -7,9 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
 Shop.destroy_all
-item = Item.create(title: 'Malboro', price: '8.00')
+item = Item.create!(title: 'Malboro', price: '8.00', description: 'red', image_url: 'www.truc.com')
 
 shop = Shop.create(title: 'Alimentation General Italie', adress: '138 avenue d’Italie – 75013', tobacco: true)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')

@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
       expect(user).to eq(false)
     end
   end
-  context "scope tests" do
+  #context "scope tests" do
   #  let (:params) { {username: 'username', email: 'example@hotmail.com',password: 'exampleom'}}
   #  before(:each) do
   #    User.new(params).save
@@ -29,6 +29,6 @@ RSpec.describe User, type: :model do
   #  end
 
 
-  end
+#  end
 
 end
