@@ -4,13 +4,13 @@
 	<%if h[:open] == nil %>
 		<p><em>fermée le <%=h[:name_of_day]%></em></p>
 	<%else%>
-		<%=h[:name_of_day]%>
+		<b><%=h[:name_of_day]%></b>
 		<% string = h[:open].to_s %>
-		Opening hour:<%= string[10..15] %>
+		, Ouverture:<%= string[10..15] %>
 		<% string = h[:close].to_s %>
-		Closing hour:<%= string[10..15] %>
+		, Fermeture:<%= string[10..15] %>
 	<%end%>
 <span class="edit">
-	<%=link_to "edit", edit_shop_operating_hour_path(@shop.id,h.id), remote: true%>
+	<%=link_to " MODIFIEZ", edit_shop_operating_hour_path(@shop.id,h.id), remote: true%></span>
 </li>
 <%end%>

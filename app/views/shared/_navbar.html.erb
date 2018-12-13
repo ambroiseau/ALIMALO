@@ -14,17 +14,19 @@
         Alimentations Générales</a>
         <div class="dropdown-menu" aria-labelledby="navbarNavDropdown">
           <a class="dropdown-item" href="shop/index">LES ALIMS</a>
-          <a class="dropdown-item" href="#">MAGAZINE ALIM</a>
-          <a class="dropdown-item" href="#">RADIO ALIM</a>
-          <a class="dropdown-item" href="#">L'ÉQUIPE ALIM_ALO</a>
+          <a class="dropdown-item" href="/">MAGAZINE ALIM</a>
+          <a class="dropdown-item" href="/">RADIO ALIM</a>
+          <a class="dropdown-item" href="/">L'ÉQUIPE ALIM_ALO</a>
           <a class="dropdown-item" href="/home/confidential">POLITIQUE DE CONFIDENTIALITÉ</a>
         </div>
 
       <%if user_signed_in? %>
-
-          <li class="nav-item">
-              <%=  link_to "Déconnexion", destroy_user_session_path, method: :delete, class:"nav-link" %>
-          </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Votre Espace</a>
+          <div class="dropdown-menu" aria-labelledby="navbarNavDropdown" id="espacepro">
+              <a href="shop/show" class="dropdown-item" data-toggle="modal" data-target="#signUpModal">VOTRE BUREAU</a>
+              <a class="dropdown-item" data-toggle="modal" data-target="#logInModal"><%=  link_to "DECONNEXION", destroy_user_session_path, method: :delete, class:"dropdown-item" %></a>
+            </div>
 
         <% else %>
         <li class="nav-item dropdown">
