@@ -1,17 +1,3 @@
 <h3><%= @shop[:title]%></h3>
-
-
-<% @hours.map do |h| %>
-<br>
-	<%if h[:open] == nil %>
-		<p><em>fermée le <%=h[:name_of_day]%></em></p>
-	<%else%>
-		<% string = h[:open].to_s %>
-		Opening hour:<%= string[10..15] %>
-		<% string = h[:close].to_s %>
-		Closing hour:<%= string[10..15] %>
-	<%end%>
-	<%=link_to "|edit|", edit_shop_operating_hour_path(@shop.id,h.id) %>
-	<br>
-	<% end %>
-
+<div id="hour-form" style="display:none;"></div>
+<div class="col-md-7 col-md-offset-1" id="hours"><%=render 'hours' %></div>

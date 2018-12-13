@@ -1,38 +1,27 @@
 class OperatingHoursController < ApplicationController
+	before_action :shop_all_hours, only: [:index, :create, :edit, :update]	
+	before_action :shop_day_hours, only: [:edit, :update]
+	respond_to :html, :js
 
-	def index
-		@shop = Shop.find(params[:shop_id])
-		@hours = @shop.operating_hours
-
-	end
-
-	def new
-	end
-
-	def create
-	end
 	def show
 	end
 
 	def edit
-		shop = Shop.find(params[:shop_id])
-		@hours = shop.operating_hours.find(params[:id])
-
 	end
 	
-def update
-	shop = Shop.find(params[:shop_id])
-	id_shop= params[:shop_id]
-	@hours = shop.operating_hours.find(params[:id])
- 
-  if @hours.update(hours_params)
-    redirect_to "/shop/#{id_shop}/operating_hours"
-  else
-    render 'edit'
-  end
-end
+	def update
+		id_shop= params[:shop_id]
+ 		@hour.update_attributes(hours_params)
+	end
 
 private
+	def shop_all_hours
+		@shop = Shop.find(params[:shop_id])
+		@hours = @shop.operating_hours
+	end
+	def shop_day_hours
+		@hour = @shop.operating_hours.find(params[:id])
+	end	
   def hours_params
     params.require(:operating_hour).permit(:open, :close)
   end

@@ -1,0 +1,16 @@
+
+<% @hours.map do |h| %>
+<li>
+	<%if h[:open] == nil %>
+		<p><em>fermée le <%=h[:name_of_day]%></em></p>
+	<%else%>
+		<%=h[:name_of_day]%>
+		<% string = h[:open].to_s %>
+		Opening hour:<%= string[10..15] %>
+		<% string = h[:close].to_s %>
+		Closing hour:<%= string[10..15] %>
+	<%end%>
+<span class="edit">
+	<%=link_to "edit", edit_shop_operating_hour_path(@shop.id,h.id), remote: true%>
+</li>
+<%end%>
