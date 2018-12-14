@@ -22,6 +22,7 @@
           <h3 id="open"></h3>
         <h3 id="open_hour"></h3>
       	<h3 id="close_hour"></h3>
+      	<h3 id="close_soon"></h3>
 
       <li>
         nbr de km API?
@@ -55,7 +56,7 @@
       </div>
     </div>
 
-    <!-- Map canvas -->
+    <!-- Map container -->
     <div id="google-map"></div>
   </div>
 </div>
@@ -75,9 +76,6 @@
 
 <script>
  $(document).ready(function () {
-
-
-    // console.log("ceci est pos en dehors de sa maison", pos);
 
     var pos;
 
@@ -313,8 +311,10 @@
                 }
                 ]};
 
+// create and display map in google-map div element, named "mymap"
 var mymap = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 
+// class for custom marker "pulse", with CSS pulse
 class MyPosition extends google.maps.OverlayView {
 
     constructor (pos, map) {
@@ -358,62 +358,67 @@ navigator.geolocation.getCurrentPosition(function(position) {
     handleLocationError(false, MyPosition, mymap.getCenter());
 }
 
+// initiate variables
 i = 1;
 var markers=[];
-var contents = [];
+// var contents = [];
 var infowindows = [];
     
 
 // loop to 1) display all markers 2) wait for click on markers (event listener) and return correct shop.id
 <% @shops.each do |shop| %>
 
+  // condition to handle geocoder gem fails
   <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
 
+    // put markers for each shop in database
     markers[i] = new google.maps.Marker({
       position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
       map: mymap,
       title: "<%= shop.id %>"
     });
 
-     markers[i].index = i;
-    // contents[i] = "<div id=[i]>" + "<%#=shop.adress%>" + "</div>";
+    // add index property on current marker. Needed for event listener : When user clicks on marker, the event listener returns the correct shop id
+    markers[i].index = i;
 
-    infowindows[i] = new google.maps.InfoWindow({
-        content: contents[i],
-        maxWidth: 300
-    });
 
+    /////// main function triggered when user clicks on a shop (marker) ///////////////////////////////
     google.maps.event.addListener(markers[i], 'click', function() {
-        infowindows[this.index].open(mymap,markers[this.index]);
+
+        // infowindows[this.index].open(mymap,markers[this.index]);
         mymap.panTo(markers[this.index].getPosition());
+
         // on click marker, reveal sidebar
         if ( $("#sidebar").hasClass("inactive") ) {
             $("#sidebar").removeClass("inactive")
         };
 
+        // on click, hide welcome message in sidebar
         $("#alimalo-presentation").hide();
 
-        console.log("ceci est this.index", this.index);
-
-        // à faire : lien pour aller chercher toutes les infos du shop
+        // send clicked shop info to sidebar
         document.getElementById("shop").innerHTML = "<%=shop.title%>";
-				<%if shop.open? %>
-        document.getElementById("open").innerHTML = "OUVERT";
-        <% else%>
-				document.getElementById("open").innerHTML = "CLOSE";
-				<%end%>
-				
-				<% shop.operating_hours.each do |hour| %>
-				<% string = hour[:open].to_s %>
-        document.getElementById("open_hour").innerHTML = "<%= string[10..15]%>";
-				<% string = hour[:close].to_s %>
-        document.getElementById("close_hour").innerHTML = "<%= string[10..15]%>";
-				<%end%>
-        
 
-        
-          
-        // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
+				<%if shop.open? %>
+        	document.getElementById("open").innerHTML = "OUVERT";
+        <% else%>
+					document.getElementById("open").innerHTML = "CLOSE";
+				<%end%>
+				<%time_hour = Time.now.strftime('%H:%M')%>
+				<% if time_hour > '00:00' and time_hour < '07:00' %>
+					<% day = Time.now.advance(days: -1).strftime('%w') %>
+				<% else %>
+					<% day = Time.now.strftime('%w')%>
+				<% end %>
+
+				<% hour = shop.operating_hours.find_by(day: day)%>
+        document.getElementById("open_hour").innerHTML = "<%= hour[:open].strftime('%H:%M')%>";
+        document.getElementById("close_hour").innerHTML = "<%= hour[:close].strftime('%H:%M')%>";
+
+				<% if shop.close_soon?%>
+        	document.getElementById("close_soon").innerHTML = "VA BIENTOT FERME>";
+       <%end%> 
+
     });
 
    <% end %>
@@ -425,5 +430,3 @@ var infowindows = [];
 
 
 </script>
-
-
