@@ -14,7 +14,11 @@ Mobile first : le design de l'app est complètement responsive, et vise avant to
 
 ## Groupe THP (ordre alphabétique)
 Ambroise Victor-Pujebet
+
 Axel Pélerin
+
 Karlito
+
 Stéphane Malville
+
 Victorian Roques
