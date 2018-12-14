@@ -7,6 +7,7 @@ gem 'mailjet'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'geocoder'
+gem 'rmagick'
 gem "aws-sdk-s3", require: false
 gem 'image_processing', '~> 1.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
