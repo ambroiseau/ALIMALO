@@ -33,13 +33,8 @@
           </div>
 
         <li>
-          nbr de km API?
-          <div id="adress">test ici :</div>
+          
           <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Horaires</a>
-
-          <div id="hour">Les horaires ici : </div>
-
-          <div id="picture">Picture ici : </div>
 
           <ul class="collapse list-unstyled" id="pageSubmenu">
           </ul>
@@ -407,7 +402,7 @@ var infowindows = [];
         $("#alimalo-presentation").hide();
 
         // send clicked shop info to sidebar
-        document.getElementById("shop").innerHTML = "<%=shop.title%>";
+        document.getElementById("shop").innerHTML = "<%#=shop.title%>";
 
 				<%if shop.open? %>
         	document.getElementById("open").innerHTML = "OUVERT";
