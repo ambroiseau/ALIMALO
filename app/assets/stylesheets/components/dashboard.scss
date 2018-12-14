@@ -1,7 +1,5 @@
 .dashboard-main {
 	margin-top:50px;
-
-
 }
 
 .dashboard-main h1 {
@@ -13,8 +11,26 @@
 	margin-top: 40px;
 }
 
-
 .dashboard-main h2 {
 	font-family: 'Righteous', sans-serif !important;
 
+}
+
+.dashboard-left {
+	overflow: scroll;
+	height: 400px;
+	padding: 20px;
+}
+
+.dashboard-right {
+	overflow: scroll;
+	height: 400px;
+	padding: 20px;
+}
+
+
+.dashboard-image {
+	height:300px;
+	width: 500px;
+	border: 3px solid #051018;
 }

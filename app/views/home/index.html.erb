@@ -1,12 +1,20 @@
 <%= render "shared/cookie"%>
 <div class="wrapper">
   <!-- Sidebar CONTENT -->
-  <nav id="sidebar" class="inactive">
+  <nav id="sidebar">
+
+    <div id="alimalo-presentation">
+      <h1>BIENVENUE SUR ALIMALO</h1>
+
+
+      
+    </div>
+
 
     <div class="sidebar-header">
         <%= image_tag ('alim.jpg') %>
     </div>
-
+      
     <ul class="list-unstyled components">
         <div class="etat">
           <h3 id="shop"></h3>
@@ -78,6 +86,11 @@
     var mapOptions = {
       center: myCoords,
       zoom: 13,
+      mapTypeControl: false,
+          mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+            mapTypeIds: ['roadmap', 'terrain']
+          },
 
       styles: [
                 {
@@ -375,8 +388,10 @@ var infowindows = [];
         mymap.panTo(markers[this.index].getPosition());
         // on click marker, reveal sidebar
         if ( $("#sidebar").hasClass("inactive") ) {
-            $("#sidebar").removeClass("inactive");
+            $("#sidebar").removeClass("inactive")
         };
+
+        $("#alimalo-presentation").hide();
 
         console.log("ceci est this.index", this.index);
 

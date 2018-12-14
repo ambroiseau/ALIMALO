@@ -1,46 +1,39 @@
 
 	<div class="dashboard-main">
 	  <div class="container">
-		<h1>Bienvenue sur votre bureau! </h1>
+		<h1>Bonjour <%=current_user.username%>, bienvenue sur votre bureau! </h1>
 		<h3>Ici, vous pouvez gérer votre profil en temps réél.</h3>
 
 		<div class="dashboard">
 			<div class="row">
+			<div class="dashboard-left col-6">
+				<h2><%= @shop.title%></h2>
+				<h4><%= @shop.adress%></h4>
+				<% if @shop.frontpicture.attached? %>
+					<%= image_tag @shop.frontpicture, class:"dashboard-image" %>
+				<% end %><br>
+				<h6>Modifiez votre image ci-dessous</h6>
+				<%= form_for @shop, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+				<%= f.file_field :frontpicture, class:"btn btn-outline-dark" %>
+				<%= f.submit "Upload", class:"btn btn-outline-dark" %>
+				<% end %>
 
-			<div class="col-6">
-			<%= form_for @shop, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
-			<%= f.file_field :frontpicture %>
-			<%= f.submit "Upload"%>
-			<% end %>
-
-			<%= @shop.frontpicture.attached? %>
-			<% if @shop.frontpicture.attached?  %>
-			<%= image_tag @shop.frontpicture.variant(resize: "10%") %>
-			<% end %>
-			<h2><%= @shop.title%></h2>
-
-			<br>
-			<h4>Adresse:</h4>
-			<h4><%= @shop.adress%></h4>
-			
 			</div>	
-
 		
-			<div class="jumbotron col-6 col-md-6 col-md-offset-1">
-			<% @hours.map do |h| %>
-			<br>
-				<%if h[:open] == nil %>
-					<p><em>fermée le <%=h[:name_of_day]%></em></p>
-				<%else%>
-					<% string = h[:open].to_s %>
-					Opening hour:<%= string[10..15] %>
-					<% string = h[:close].to_s %>
-					Closing hour:<%= string[10..15] %>
+			<div class="dashboard-right jumbotron col-6 col-md-6 col-md-offset-1">
+				<br><br>
+				<% @hours.map do |h| %><br>
+					<%if h[:open] == nil %>
+						<p><em>fermée le <%=h[:name_of_day]%></em></p>
+					<%else%>
+						<% string = h[:open].to_s %>
+						Horaires d'ouverture:<%= string[10..15] %>
+						<% string = h[:close].to_s %>
+						Horaire de fermeture:<%= string[10..15] %>
 					<%end%>
-			<%end%>
-			<br>
-			<p> <em>Si vous êtes l'épicier:</em> </p>
-			<h4><%= link_to "edit les horraires", shop_operating_hours_path(params[:id]) %> </h4>
+				<%end%><br><br><br>
+				<p><em>Si vous êtes l'épicier:</em> </p>
+				<h6><%= link_to "Modifier les horraires", shop_operating_hours_path(params[:id]) %> </h6>
 			</div>
 
 		</div>
