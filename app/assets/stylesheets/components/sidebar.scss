@@ -1,0 +1,98 @@
+
+/* ---------------------------------------------------
+    INNER SIDEBAR STYLE
+----------------------------------------------------- */
+
+
+.wrapper #sidebar img {
+    width: 100%;
+    border-radius: 1em;
+}
+
+.wrapper #sidebar .sidebar-header {
+    width:100%;
+}
+
+#shopshow {
+	color:#79B4C7; 
+	background-color: #051018;
+	padding: 20px;
+}
+
+
+#shopshow  {
+
+}
+
+.wrapper #sidebar ul.components {
+    padding: 40px 0;
+    border-bottom: 1px solid #537060;
+}
+
+.wrapper #sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+.wrapper #sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    &:hover {
+    color: #537060;
+    background: #fff;
+    }
+}
+
+.wrapper #sidebar ul li.inactive > a, .wrapper a[aria-expanded="true"] {
+    color: #fff;
+    background: #537060;
+}
+
+
+.wrapper a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.wrapper a[aria-expanded="false"]::before, .wrapper a[aria-expanded="true"]::before {
+    content: '\e259';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 0.6em;
+}
+
+.wrapper a[aria-expanded="true"]::before {
+    content: '\e260';
+}
+
+.wrapper ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #537060;
+}
+
+.wrapper .etat {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;;
+}
+
+.wrapper .etat h4{
+    color: #68E52D;
+}
+
+.wrapper .timeline {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+			align-content: flex-end;
+            flex-direction: column;
+}
+
