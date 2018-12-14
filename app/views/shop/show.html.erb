@@ -17,9 +17,10 @@
 				<%= f.file_field :frontpicture, class:"btn btn-outline-dark" %>
 				<%= f.submit "Upload", class:"btn btn-outline-dark" %>
 				<% end %>
+				<%= link_to "Modifier ces information",   new_user_registration_path %>
 
-			</div>	
-		
+			</div>
+
 			<div class="dashboard-right jumbotron col-6 col-md-6 col-md-offset-1">
 				<br><br>
 				<% @hours.map do |h| %><br>
