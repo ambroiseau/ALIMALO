@@ -7,6 +7,10 @@ Point jaune qui clignote : votre position en tant que noctambule. Une 20aine de 
 # Lien en production : https://alim-alo.herokuapp.com/
 # Merci d'actualiser la page jusqu'à obtenir une carte (solved soon)
 
+Si difficulté à scroller la sidebar, passer en largeur de navigateur (mobile) (réduire la largeur de la fenêtre navigateur)
+
+Les barres transparentes verticales (desktop) ou horizontales (mobile) servent à toggle side/bottom bar
+
 ## Essentiel 
 fonction time.now : L'utilisateur en manque de ravitaillement voit en direct quelles épiceries sont ouvertes ou fermées.
 
