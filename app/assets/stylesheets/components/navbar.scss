@@ -56,5 +56,9 @@ nav .dropdown-item {
 }
 
 nav #alimlogo:hover {
-	transform: scale(1.1);
+	opacity: 1;
+}
+
+nav #alimlogo {
+	opacity: 0.8;
 }

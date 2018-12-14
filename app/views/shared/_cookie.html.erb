@@ -1,0 +1,16 @@
+<div id="cookieConsent">
+    <div id="closeCookieConsent">x</div>
+    <div class="message">En poursuivant votre navigation sur ce site, vous acceptez nos Conditions Générales d'Utilisation et l'utilisation de cookies. Pour en savoir plus... <a href="/home/confidential">voir notre politique de confidentialité.</a><a class="cookieConsentOK">J'accepte</a></div>
+</div>
+
+<script >
+	
+	$(document).ready(function(){   
+    setTimeout(function () {
+        $("#cookieConsent").fadeIn(200);
+     }, 4000);
+    $("#closeCookieConsent, .cookieConsentOK").click(function() {
+        $("#cookieConsent").fadeOut(200);
+    }); 
+}); 
+</script>
