@@ -14,7 +14,9 @@
           <h3 id="open"></h3>
         <h3 id="open_hour"></h3>
       	<h3 id="close_hour"></h3>
-
+        <form id="itinary" name="itinary" action="#" method="get">
+          <input type="submit" value="Itinéraire" id="shopy">
+        </form>
       <li>
         nbr de km API?
         <a href="#" id="adress">test ici :</a>
@@ -66,6 +68,7 @@
 
 
 <script>
+  var imhere;
  $(document).ready(function () {
 
 
@@ -334,6 +337,7 @@ class MyPosition extends google.maps.OverlayView {
 if (navigator.geolocation) {
 navigator.geolocation.getCurrentPosition(function(position) {
     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    imhere = pos;
     new MyPosition(pos, mymap);
     mymap.setCenter(pos);
      }, function() {
@@ -387,15 +391,19 @@ var infowindows = [];
         <% else%>
 				document.getElementById("open").innerHTML = "CLOSE";
 				<%end%>
-				
+				//document.getElementById("shopy") = "<% shop %>"
 				<% shop.operating_hours.each do |hour| %>
 				<% string = hour[:open].to_s %>
         document.getElementById("open_hour").innerHTML = "<%= string[10..15]%>";
 				<% string = hour[:close].to_s %>
         document.getElementById("close_hour").innerHTML = "<%= string[10..15]%>";
 				<%end%>
-        
-
+        if (i)
+        $("#itinary").submit(function(event) {
+        // event.preventDefault();
+          console.log("<%=shop.title%>")
+          //itinary($(imhere).val(), $("shop").val());
+        });
         
           
         // <%# link_to "shop", shop_path%>(this.index)<%#, remote: true %>
@@ -403,11 +411,46 @@ var infowindows = [];
 
    <% end %>
    i++;
+  
+
 <% end %>
 
 
 });
 
+function itinary(from, to) {
+        // Center initialized to user
+        var myOptions = {
+          zoom: 10,
+          center: from,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        // Draw the map
+        var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
+
+        var directionsService = new google.maps.DirectionsService();
+        var directionsRequest = {
+          origin: from,
+          destination: to,
+          travelMode: google.maps.DirectionsTravelMode.WALKING,
+          unitSystem: google.maps.UnitSystem.METRIC
+        };
+        directionsService.route(
+          directionsRequest,
+          function(response, status)
+          {
+            if (status == google.maps.DirectionsStatus.OK)
+            {
+              new google.maps.DirectionsRenderer({
+                map: mapObject,
+                directions: response
+              });
+            }
+            else
+              $("#error").append("Unable to retrieve your route<br />");
+          }
+        );
+      }
 
 </script>
 
