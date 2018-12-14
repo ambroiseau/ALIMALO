@@ -76,7 +76,7 @@
 <script>
  $(document).ready(function () {
 
-    var pos;
+    //var pos;
 
     var myCoords = {lat: 48.86, lng: 2.34}
 
@@ -342,20 +342,72 @@ class MyPosition extends google.maps.OverlayView {
 
 }
 
-// Try HTML5 geolocation
-if (navigator.geolocation) {
-navigator.geolocation.getCurrentPosition(function(position) {
-    var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    new MyPosition(pos, mymap);
+// geolocation AND functions depending on it (distance, stylay overlay marker...)
+
+
+function parent(){
+  var pos;
+
+  function success(pos) {
+    new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    doSomethingWithPosition();
+  }
+
+  function error () {
+    output.innerHTML = "Impossible de géolocaliser";
+  }
+
+  navigator.geolocation.getCurrentPosition(success, error);
+
+  function doSomethingWithPosition(){
+     var longitude = position.coords.longitude; 
+
+    // center map, position in the middle
     mymap.setCenter(pos);
-     }, function() {
-    handleLocationError(true, MyPosition, mymap.getCenter());
+
+     // create custom overlay Marker on geolocalisation
+     new MyPosition(pos, mymap);
+
+     doSomethingElseWithPosition();
+  }
+
+
+  function doSomethingElseWithPosition(){
+     var latitude = position.coords.latitude;
+  }
+
+}
+
+
+
+// Try HTML5 geolocation
+// if (navigator.geolocation) {
+
+//   navigator.geolocation.getCurrentPosition(function(position) {
+
+    pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+    // create custom overlay Marker on geolocalisation
+    new MyPosition(pos, mymap);
+
+    // center map, position in the middle
+    mymap.setCenter(pos);
+
+    },
+
+    function() {
+    handleLocationError(true, pos, mymap.getCenter());
     });
 
-} else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, MyPosition, mymap.getCenter());
-}
+// } else {
+//     // Browser doesn't support Geolocation
+//     handleLocationError(false, pos, mymap.getCenter());
+// }
+
+
+
+//////////////////////////////////////////////////////////////////////////
+
 
 // initiate variables
 i = 1;
@@ -416,6 +468,33 @@ var infowindows = [];
    <% end %>
    i++;
 <% end %>
+
+
+///////////// calculate distance ///////////////////
+
+console.log("salut");
+
+function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+  var dLon = deg2rad(lon2-lon1); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180);
+}
+
+console.log(getDistanceFromLatLonInKm(48.8716,2.393,48.868,2.3015));
+console.log("affiche ça REEEEE");
+console.log("ceci est pos : ", pos);
 
 
 });
