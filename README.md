@@ -17,7 +17,7 @@ Ambroise Victor-Pujebet
 
 Axel Pélerin
 
-Karlito
+Karl Verdière
 
 Stéphane Malville
 
