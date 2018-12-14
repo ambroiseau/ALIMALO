@@ -14,6 +14,7 @@
           <h3 id="open"></h3>
         <h3 id="open_hour"></h3>
       	<h3 id="close_hour"></h3>
+      	<h3 id="close_soon"></h3>
 
       <li>
         nbr de km API?
@@ -383,18 +384,24 @@ var infowindows = [];
         // à faire : lien pour aller chercher toutes les infos du shop
         document.getElementById("shop").innerHTML = "<%=shop.title%>";
 				<%if shop.open? %>
-        document.getElementById("open").innerHTML = "OUVERT";
+        	document.getElementById("open").innerHTML = "OUVERT";
         <% else%>
-				document.getElementById("open").innerHTML = "CLOSE";
+					document.getElementById("open").innerHTML = "CLOSE";
 				<%end%>
-				
-				<% shop.operating_hours.each do |hour| %>
-				<% string = hour[:open].to_s %>
-        document.getElementById("open_hour").innerHTML = "<%= string[10..15]%>";
-				<% string = hour[:close].to_s %>
-        document.getElementById("close_hour").innerHTML = "<%= string[10..15]%>";
-				<%end%>
-        
+				<%time_hour = Time.now.strftime('%H:%M')%>
+				<% if time_hour > '00:00' and time_hour < '07:00' %>
+					<% day = Time.now.advance(days: -1).strftime('%w') %>
+				<% else %>
+					<% day = Time.now.strftime('%w')%>
+				<% end %>
+
+					<% hour = shop.operating_hours.find_by(day: day)%>
+        document.getElementById("open_hour").innerHTML = "<%= hour[:open].strftime('%H:%M')%>";
+        document.getElementById("close_hour").innerHTML = "<%= hour[:close].strftime('%H:%M')%>";
+
+				<% if shop.close_soon?%>
+        	document.getElementById("close_soon").innerHTML = "VA BIENTOT FERME>";
+       <%end%> 
 
         
           
