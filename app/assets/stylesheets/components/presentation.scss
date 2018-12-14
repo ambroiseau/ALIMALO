@@ -1,0 +1,26 @@
+#alimalo-presentation {
+	height: 600px;
+	background-color: #051018; 
+	padding: 20px;
+	color:#4E8DA1;
+}
+
+.presentation-text{
+	margin-left: 10px;
+}
+
+.motto {
+
+  display:table-cell;
+  vertical-align:middle;
+  text-align:center;
+  text-decoration: blink;
+ 
+  color:#79B4C7; 
+  background-color:#051018; 
+	&:hover{
+		color:#051018; 
+  		background-color:#f2fbff;
+  	}
+}
+ 
