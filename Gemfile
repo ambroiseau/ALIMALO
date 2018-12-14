@@ -7,7 +7,6 @@ gem 'mailjet'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'geocoder'
-gem 'rmagick'
 gem "aws-sdk-s3", require: false
 gem 'image_processing', '~> 1.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -36,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'momentjs-rails', '~> 2.5.0'
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
