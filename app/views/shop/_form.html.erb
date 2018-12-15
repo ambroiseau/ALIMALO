@@ -1,10 +1,10 @@
-<%=form_for @shop , url: {action: "create"} do |f|   %>
+<%=simple_form_for @shop , url: {action: "create"} do |f|   %>
 	<p> Titre </p>
-  <%= f.text_field  :title %>
+  <%= f.input  :title, label: "Nom de l'épicerie", error: "Nom de l'épicerie requis s'il vous plait" %>
 	<p> Adress </p>
-  <%= f.text_field :adress %>
+  <%= f.input :adress %>
 	<p> Tabac </p>
-	<%= f.check_box :tobacco %>
+	<%= f.input :tobacco %>
 	<p><%= f.hidden_field :user_id, :value => current_user.id %></p>
 <%= f.button :submit%>
 <% end %>
