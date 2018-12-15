@@ -1,10 +1,8 @@
-<%=form_for @shop , url: {action: "create"} do |f|   %>
-	<p> Titre </p>
-  <%= f.text_field  :title %>
-	<p> Adress </p>
-  <%= f.text_field :adress %>
-	<p> Tabac </p>
-	<%= f.check_box :tobacco %>
-	<p><%= f.hidden_field :user_id, :value => current_user.id %></p>
+<%=simple_form_for @shop , url: {action: "create"} do |f|   %>
+  <%= f.input  :title, label: "Nom de l épicerie", error: "Nom de l'épicerie requis s'il vous plait" %>
+  <%= f.input :adress, placeholder: 'Exemple: 5 Rue Francois Mitterrand, Paris', error: "Entrez votre adress suivant le même format que ci-dessus" %>
+	<%= f.input :siret, placeholder: '123 568 94', error: " Numero de Siret requis" %>
+	<%= f.input :tobacco %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
 <%= f.button :submit%>
 <% end %>
