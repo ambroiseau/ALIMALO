@@ -1,11 +1,12 @@
 class ShopController < ApplicationController
-before_action :all_shops, only: [:index, :create]
+	before_action :all_shops, only: [:index, :create]
+	after_action :create_operating_hours, only: [:create], if: -> {@shop.save}
 	respond_to :html, :js
 	def new
 		@shop = Shop.new
 	end
 	def create
-		@shop = Shop.create(shop_params)
+		@shop = Shop.new(shop_params)
 		if @shop.save
 			redirect_to shop_path(@shop.id)
 		else
@@ -42,5 +43,15 @@ before_action :all_shops, only: [:index, :create]
 
 	def shop_params
 		params.require(:shop).permit(:title, :adress, :tobacco, :user_id)
+	end
+
+	def create_operating_hours
+		@shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+		@shop.operating_hours.create(name_of_day: 'Mardi' ,day: 2, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+		@shop.operating_hours.create(name_of_day: 'Mercredi' ,day: 3, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+		@shop.operating_hours.create(name_of_day: 'Jeudi' ,day: 4, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+		@shop.operating_hours.create(name_of_day: 'Vendredi' ,day: 5, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+		@shop.operating_hours.create(name_of_day: 'Samedi',day: 6, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+		@shop.operating_hours.create(name_of_day: 'Dimanche' ,day: 7, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 	end
 end
