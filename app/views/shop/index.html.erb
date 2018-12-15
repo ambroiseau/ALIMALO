@@ -1,4 +1,10 @@
 <div class="container">
+<%= link_to new_shop_path ,{:action => :create, :user_id => current_user.id}, :method => :get do %>
+      <button class="btn btn-default">New</button>
+    <% end %>
+	<div id="shop-form"><div>
+		<div id="sucess"></div>
+</div>
   <div class="jumbotron">
 		<h2>LES ALIMENTATIONS GÉNÉRALES PRÈS DE CHEZ VOUS</h2>
 		 	<div class="list-alim">   
@@ -17,14 +23,7 @@
           <div class="product-description">
             <h3><%= shop.title%></h3>
             <p><%= shop.adress%></p>
-						<%if shop.open? %>
-							<p>OUVERT</p>
-						<%else%>
-							<p> FERMEE </p>
-						<%end%>
-						<% if shop.open? && shop[:close_soon == true ] %>
-							<p> VA BIENTOT FERMER </p>
-						<% end %>
+						<%= link_to "SHOW", shop_path(shop.id) %>
           </div>
         </li>
       </ul>
