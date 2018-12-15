@@ -402,7 +402,7 @@ var infowindows = [];
         $("#alimalo-presentation").hide();
 
         // send clicked shop info to sidebar
-        document.getElementById("shop").innerHTML = "<%#=shop.title%>";
+        document.getElementById("shop").innerHTML = "<%=shop.title%>";
 
 				<%if shop.open? %>
         	document.getElementById("open").innerHTML = "OUVERT";
