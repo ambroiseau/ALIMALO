@@ -10,15 +10,15 @@ require "open-uri"
 Shop.destroy_all
 
 shop = Shop.create(title: 'Alimentation General Italie', adress: '138 avenue d’Italie – 75013', tobacco: true)
-shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
-shop.operating_hours.create(name_of_day: 'Mardi' ,day: 2, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
-shop.operating_hours.create(name_of_day: 'Mercredi' ,day: 3, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
-shop.operating_hours.create(name_of_day: 'Jeudi' ,day: 4, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
-shop.operating_hours.create(name_of_day: 'Vendredi' ,day: 5, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
-shop.operating_hours.create(name_of_day: 'Samedi',day: 6, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
-shop.operating_hours.create(name_of_day: 'Dimanche' ,day: 7, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(name_of_day: 'Mardi' ,day: 2, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(name_of_day: 'Mercredi' ,day: 3, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(name_of_day: 'Jeudi' ,day: 4, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(name_of_day: 'Vendredi' ,day: 5, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(name_of_day: 'Samedi',day: 6, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+shop.operating_hours.create(name_of_day: 'Dimanche' ,day: 7, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 
-shop = Shop.create(title: 'PICERIE DE TENON', adress: '46 rue Pelleport – 75020', tobacco: false)
+shop = Shop.create(title: 'EPICERIE DE TENON', adress: '46 rue Pelleport – 75020', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mercredi', day: 3, open: '22:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
