@@ -20,10 +20,6 @@
 }
 
 
-#shopshow  {
-
-}
-
 .wrapper #sidebar ul.components {
     padding: 40px 0;
     border-bottom: 1px solid #537060;
@@ -82,17 +78,30 @@
             justify-content: space-between;;
 }
 
-.wrapper .etat h4{
-    color: #68E52D;
-}
 
-.wrapper .timeline {
+.wrapper .second-line {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
-			align-content: flex-end;
-            flex-direction: column;
+            justify-content: space-between;
+
+}
+
+#open {
+    color: #33FF00;
+
+}
+
+#shop {
+    margin-right: 6px;
+}
+
+.wrapper .timeline {
+    padding: 10px;
+    border: 2px solid #537060;
+    border-radius: 1em;
+
 }
 

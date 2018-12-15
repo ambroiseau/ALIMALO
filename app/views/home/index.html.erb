@@ -18,30 +18,21 @@
     </div>
 
     <div id="shopshow">
-      <div class="sidebar-header">
-          <%= image_tag ('alim.jpg') %>
-      </div>
+      <div class="sidebar-header" id="image"></div>
         
       <ul class="list-unstyled components">
           <div class="etat">
             <h3 id="shop"></h3>
             <h3 id="open"></h3>
-          </div>
-          <div class="timeline">
-            <h3 id="open_hour"></h3>
-          	<h3 id="close_hour"></h3>
-          </div>
+          </div><br>
+          <div class="second-line">
+            <div id="adress"></div>
+            <div class="timeline">
+              <h3 id="open_hour"></h3>
+            	<h3 id="close_hour"></h3>
+            </div>
 
         <li>
-          
-          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Horaires</a>
-
-          <ul class="collapse list-unstyled" id="pageSubmenu">
-          </ul>
-        </li>
-        <li>
-            <a href="#">Contact</a>
-        </li>
       </ul>
     </div>
 
@@ -499,8 +490,9 @@ var infowindows = [];
         $("#alimalo-presentation").hide();
 
         // send clicked shop info to sidebar
-        document.getElementById("shop").innerHTML = "<%=shop.title%>";
 
+        document.getElementById("shop").innerHTML = "<%=shop.title%>";
+        document.getElementById("adress").innerHTML = "<%=shop.adress%>"
 				<%if shop.open? %>
         	document.getElementById("open").innerHTML = "OUVERT";
         <% else%>
