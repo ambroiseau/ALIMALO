@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2018_12_15_143158) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "close_soon"
     t.string "siret"
     t.index ["user_id"], name: "index_shops_on_user_id"
   end
