@@ -62,3 +62,69 @@ nav #alimlogo:hover {
 nav #alimlogo {
 	opacity: 0.8;
 }
+
+
+/* Texte défilant */
+
+.defileParent {
+	display:block;
+	margin-left: 5em;
+	overflow: hidden;
+	position: relative;
+	table-layout: fixed;
+	width: 450px;
+	background-color: blue;
+
+}
+.defile {
+	display:block;
+	font-family: "Roboto", sans-serif;
+	-webkit-animation:linear marqueelike 20s infinite ;
+	-moz-animation:linear marqueelike 20s infinite ;
+	-o-animation:linear marqueelike 20s infinite ;
+	-ms-animation:linear marqueelike 20s infinite ;
+	animation:linear marqueelike 20s infinite ;
+	padding:0 5px;
+	text-align:left;
+	height:10px;
+	color: yellow;
+}
+
+
+.defile:after {
+	content:attr(data-text);
+	position:absolute;
+	white-space:nowrap;
+	padding-left:10px;
+}
+
+@-webkit-keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+@-moz-keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+@-o-keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+@-ms-keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+@keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+
+@media only screen and (max-width: 1300px) {
+	.defileParent {
+		display: none;
+	}
+
+	.defile {
+		display:none;
+	}
+}
