@@ -7,8 +7,8 @@ class CreateShops < ActiveRecord::Migration[5.2]
 			t.decimal :latitude, optional: true
 			t.decimal :longitude, optional: true
 			t.boolean :tobacco
-			t.string :image_url
 	
+
       t.timestamps
     	end
 			create_table :items_shops, id: false do |t|

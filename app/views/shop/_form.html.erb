@@ -1,0 +1,10 @@
+<%=form_for @shop , url: {action: "create"} do |f|   %>
+	<p> Titre </p>
+  <%= f.text_field  :title %>
+	<p> Adress </p>
+  <%= f.text_field :adress %>
+	<p> Tabac </p>
+	<%= f.check_box :tobacco %>
+	<p><%= f.hidden_field :user_id, :value => current_user.id %></p>
+<%= f.button :submit%>
+<% end %>

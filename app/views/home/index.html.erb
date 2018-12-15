@@ -4,44 +4,50 @@
   <nav id="sidebar">
 
     <div id="alimalo-presentation">
-      <h1>BIENVENUE SUR ALIMALO</h1>
+      <br>
+      <h1 class="motto">BIENVENUE SUR ~ALIM-ALO~</h1><br>
+      <h2 class="motto">//Le réseaux des alimentations générales//</h2><br><br>
 
+      <!--       <h2 class="presentation-text">SOMNAMBULES, ANIMAUX </h2>
+      <h1 class="presentation-text"> /////SANS SOMMEIL,</h1> <h2 class="presentation-text">INSOMNIAQUES,FÊTARDS CRÉATURES VESPÉRALES//</h2> -->
+      <h3 class="presentation-text">Il fait nuit, il fêtard...</h3>
+      <h3 class="presentation-text">Trouvez à toute heure l'épicerie la plus proche:</h3>
+      <h3 class="presentation-text">Vos alims sont là pour vous, chers amis sans sommeil.</h3>
 
-      
+      <h3></h3>
     </div>
 
+    <div id="shopshow">
+      <div class="sidebar-header">
+          <%= image_tag ('alim.jpg') %>
+      </div>
+        
+      <ul class="list-unstyled components">
+          <div class="etat">
+            <h3 id="shop"></h3>
+            <h3 id="open"></h3>
+          </div>
+          <div class="timeline">
+            <h3 id="open_hour"></h3>
+          	<h3 id="close_hour"></h3>
+          </div>
 
-    <div class="sidebar-header">
-        <%= image_tag ('alim.jpg') %>
+        <li>
+          
+          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Horaires</a>
+
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+          </ul>
+        </li>
+        <li>
+            <a href="#">Portfolio</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+      </ul>
     </div>
-      
-    <ul class="list-unstyled components">
-        <div class="etat">
-          <h3 id="shop"></h3>
-			</div>
-          <h3 id="open"></h3>
-        <h3 id="open_hour"></h3>
-      	<h3 id="close_hour"></h3>
 
-      <li>
-        nbr de km API?
-        <a href="#" id="adress">test ici :</a>
-        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Horaires</a>
-
-        <div id="hour">Les horaires ici : </div>
-
-        <div id="picture">Picture ici : </div>
-
-        <ul class="collapse list-unstyled" id="pageSubmenu">
-        </ul>
-      </li>
-      <li>
-          <a href="#">Portfolio</a>
-      </li>
-      <li>
-          <a href="#">Contact</a>
-      </li>
-    </ul>
 
   </nav>
 
@@ -451,17 +457,24 @@ var infowindows = [];
         document.getElementById("shop").innerHTML = "<%=shop.title%>";
 
 				<%if shop.open? %>
-          document.getElementById("open").innerHTML = "OUVERT";
+        	document.getElementById("open").innerHTML = "OUVERT";
         <% else%>
-			    document.getElementById("open").innerHTML = "CLOSE";
+					document.getElementById("open").innerHTML = "FERMÉ";
 				<%end%>
-				
-				<% shop.operating_hours.each do |hour| %>
-				  <% string = hour[:open].to_s %>
-          document.getElementById("open_hour").innerHTML = "<%= string[10..15]%>";
-				  <% string = hour[:close].to_s %>
-          document.getElementById("close_hour").innerHTML = "<%= string[10..15]%>";
-				<%end%>
+				<%time_hour = Time.now.strftime('%H:%M')%>
+				<% if time_hour > '00:00' and time_hour < '07:00' %>
+					<% day = Time.now.advance(days: -1).strftime('%w') %>
+				<% else %>
+					<% day = Time.now.strftime('%w')%>
+				<% end %>
+
+				<% hour = shop.operating_hours.find_by(day: day)%>
+        document.getElementById("open_hour").innerHTML = "<%= hour[:open].strftime('%H:%M')%>";
+        document.getElementById("close_hour").innerHTML = "<%= hour[:close].strftime('%H:%M')%>";
+
+				<% if shop.close_soon?%>
+        	document.getElementById("close_soon").innerHTML = "VA BIENTÔT FERMER>";
+       <%end%> 
 
     });
 
