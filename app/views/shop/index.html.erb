@@ -1,7 +1,9 @@
 <div class="container">
-<%= link_to new_shop_path ,{:action => :create, :user_id => current_user.id}, :method => :get do %>
+<% if current_user %>
+<%= link_to new_shop_path ,{ :user_id => current_user.id}, :method => :get do %>
       <button class="btn btn-default">New</button>
     <% end %>
+	<% end %>
 	<div id="shop-form"><div>
 		<div id="sucess"></div>
 </div>
