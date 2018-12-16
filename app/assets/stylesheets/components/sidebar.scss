@@ -10,18 +10,19 @@
     color:#79B4C7; 
     background-color: #051018;
     padding: 20px;
+    margin: 6px;
 }
 
 
 /* IMAGE */
 
-.wrapper#sidebar#image {
-    width: 80%;
+.wrapper .sidebar-header {
+    width: 100%;
     border-radius: 1em;
 }
 
 
-/* COMPONENTS */
+/* VIEW SHOP COMPONENTS */
 
 .wrapper #sidebar ul.components {
     padding: 40px 0;
@@ -37,15 +38,20 @@
             justify-content: space-between;
 }
 
+.wrapper .second-line {
+    display:flex;
+    justify-content: space-between;
+    margin-top: 8px;
+
+}
+
+
 .wrapper .info-name {
     width:230px;
     padding: 10px;
 
 }
 
-#shopshow#shop {
-    margin-right: 6px;
-}
 
 .wrapper .timeline {
     width:130px;
@@ -53,4 +59,26 @@
     border: 2px solid #537060;
     border-radius: 1em;
 }
+
+
+.wrapper #distance-shop {
+    width:65px;
+    padding: 10px;
+    border: 2px solid #537060;
+    border-radius: 1em;
+}
+
+.wrapper .itinerary {
+    height:50px;
+    padding: 10px;
+    border: 2px solid #537060;
+    border-radius: 1em;
+    &:hover{
+        color:#051018;
+        background-color:white;
+        background-opacity: 0.6;
+    }
+}
+
+
 
