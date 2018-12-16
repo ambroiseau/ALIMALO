@@ -52,6 +52,6 @@ class ShopController < ApplicationController
 		@shop.operating_hours.create(name_of_day: 'Jeudi' ,day: 4, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 		@shop.operating_hours.create(name_of_day: 'Vendredi' ,day: 5, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 		@shop.operating_hours.create(name_of_day: 'Samedi',day: 6, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
-		@shop.operating_hours.create(name_of_day: 'Dimanche' ,day: 7, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+		@shop.operating_hours.create(name_of_day: 'Dimanche' ,day: 0, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 	end
 end
