@@ -3,8 +3,8 @@
     <%= link_to(image_tag('alim-alo.png', class:"navbar-brand"), root_path) %>
   </div>
 
-  <div class="defileParent">
-    <p class="defile" data-text="ne manquez plus de rien tard le soir // ne manquez plus de rien tard le soir //ne manquez plus de rien tard le soir // ne manquez plus de rien tard le soir // ">ne manquez plus de rien tard le soir //</p>
+  <div class="defileParent">      
+    <p class="defile" data-text=" ne manquez plus de rien le soir // ne manquez plus de rien tard le soir //ne manquez plus de rien le soir // ne manquez plus de rien tard le soir // ne manquez plus de rien le soir // ne manquez plus de rien tard le soir //ne manquez plus de rien le soir // ne manquez plus de rien tard le soir //">ne manquez plus de rien le soir // </p>
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,15 +21,19 @@
           <a class="dropdown-item" href="/">MAGAZINE ALIM</a>
           <a class="dropdown-item" href="/">RADIO ALIM</a>
           <a class="dropdown-item" href="/">À PROPOS D'ALIM-ALO</a>
-          <a class="dropdown-item" href="/home/confidential">POLITIQUE DE CONFIDENTIALITÉ</a>
         </div>
 
       <%if user_signed_in? %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>VOTRE ESPACE</b></a>
           <div class="dropdown-menu" aria-labelledby="navbarNavDropdown" id="espacepro">
-              <a href="shop/show" class="dropdown-item" data-toggle="modal" data-target="#signUpModal">VOTRE BUREAU</a>
-              <a class="dropdown-item" data-toggle="modal" data-target="#logInModal"><%=  link_to "DECONNEXION", destroy_user_session_path, method: :delete, class:"dropdown-item" %></a>
+						<% if shop_id = Shop.find_by(user_id: current_user.id) %>
+						  <a class="dropdown-item" data-toggle="modal" data-target="#signUpModal"><%= link_to "VOTRE BUREAU", shop_path(shop_id)%></a>
+             <% else %>
+							<a class="dropdown-item" data-toggle="modal" data-target="#signUpModal"><%= link_to "VOTRE BUREAU", new_shop_path, { :user_id => current_user.id} %></a>
+							<%end%>
+              <a data-toggle="modal" data-target="#logInModal"><%=  link_to "DECONNEXION", destroy_user_session_path, method: :delete, class:"dropdown-item" %></a>
+              <a class="dropdown-item" href="/home/confidential">CGU</a>
             </div>
 
         <% else %>
@@ -38,6 +42,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarNavDropdown" id="espacepro">
               <a class="dropdown-item" data-toggle="modal" data-target="#signUpModal">REJOINDRE</a>
               <a class="dropdown-item" data-toggle="modal" data-target="#logInModal">CONNEXION</a>
+              <a class="dropdown-item" href="/home/confidential">CGU</a>
             </div>
           </li>
         <% end %>

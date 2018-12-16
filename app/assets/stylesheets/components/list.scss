@@ -1,12 +1,15 @@
-#alim-page {
-  background-color: yellow;
-}
+/* ---------------------------------------------------
+    LIST OF ALL SHOPS
+----------------------------------------------------- */
 
 .list-alim {
   margin-bottom: 60px;
-  height:400px;
+  height:300px;
   margin-top: 40px;
   overflow: scroll !important;
+  border: 10px solid #152F49;
+  border-radius: 1em;
+
 }
 
 .product {

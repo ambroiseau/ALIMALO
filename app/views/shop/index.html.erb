@@ -1,11 +1,4 @@
 <div class="container">
-  
-  <% if current_user %>
-  <%= link_to new_shop_path ,{ :user_id => current_user.id}, :method => :get do %>
-        <button class="btn btn-default">New</button>
-      <% end %>
-  	<% end %>
-
   <br>
 	<div id="shop-form"><div>
 		<div id="sucess"></div>
@@ -13,25 +6,33 @@
   <div class="jumbotron">
 		<h2>LES ALIMENTATIONS GÉNÉRALES PRÈS DE CHEZ VOUS</h2>
 		 	<div class="list-alim">   
+         <% @shops.each do |shop|%>
+          <ul class="list-unstyled">
+            <li class="product">
 
-     <% @shops.each do |shop|%>
-      <ul class="list-unstyled">
-        <li class="product">
+              <div class="product-upvote text-center">
+                <p>1 KM</p>
+              </div>
+      				
+              <img src="<%=shop[:image_url]%>" alt="" class="product-image img-rounded">
 
-          <div class="product-upvote text-center">
-            <p>1 KM</p>
-          </div>
-					
-          <img src="<%=shop[:image_url]%>" alt="" class="product-image img-rounded">
+              <div class="product-description">
+                <h3><%= shop.title%></h3>
+                <p><%= shop.adress%></p>
+      					<%= link_to "SHOW", shop_path(shop.id) %>
+              </div>
+            </li>
+          </ul>
+         <%end%> 
+      </div>
 
-          <div class="product-description">
-            <h3><%= shop.title%></h3>
-            <p><%= shop.adress%></p>
-						<%= link_to "SHOW", shop_path(shop.id) %>
-          </div>
-        </li>
-      </ul>
-     <%end%> 
-    </div>
+      <!-- BUTTON TO OPEN A NEW SHOP-->
+    <% if current_user %>
+  <%= link_to new_shop_path ,{ :user_id => current_user.id}, :method => :get do %>
+        <button class="btn btn-dark float-right">PLACER NOUVELLE ALIMENTATION GÉNÉRALE</button>
+      <% end %>
+    <% end %>
+
   </div>
 </div>
+
