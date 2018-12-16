@@ -18,7 +18,7 @@ shop.operating_hours.create(name_of_day: 'Vendredi' ,day: 5, open: '13:00', clos
 shop.operating_hours.create(name_of_day: 'Samedi',day: 6, open: '13:00', close: '04:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche' ,day: 7, open: '13:00', close: '04:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 
-shop = Shop.create(title: 'EPICERIE DE TENON', adress: '46 rue Pelleport – 75020', tobacco: false)
+shop = Shop.create(title: 'Épicerie de Ténon', adress: '46 rue Pelleport – 75020', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '10:00', close: '23:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '10:00', close: '23:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mercredi', day: 3, open: '10:00', close: '23:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -35,6 +35,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '09:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '09:00', close: '23:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '09:00', close: '23:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '09:00', close: '23:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Station-service Avia', adress: '5 boulervard Garibaldi, Paris', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '22:00', close: '01:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '22:00', close: '01:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -43,6 +44,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '22:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '22:00', close: '01:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '22:00', close: '01:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '22:00', close: '01:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Tôt ou tard épicerie libre-service', adress: '39 rue Letellier, Paris', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '14:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '14:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -51,6 +53,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '14:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '14:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '14:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '14:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Cocci Market Belgrand', adress: '13 rue Belgrand, Paris', tobacco: true)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '14:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '14:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -59,6 +62,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '14:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '14:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '14:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '14:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Supérette Meryam', adress: '3 rue de la Chine, Paris', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '10:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '10:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -67,6 +71,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '10:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '10:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '10:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '10:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Epicerie Aolouze', adress: '5 avenue Gambetta , Paris', tobacco: true)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '10:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '10:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -75,7 +80,8 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '10:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '10:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '10:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '10:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
-shop = Shop.create(title: 'Epicierie Oberkampf', adress: '104 rue Oberkampf , Paris', tobacco: true)
+
+shop = Shop.create(title: 'Épicerie Oberkampf', adress: '104 rue Oberkampf , Paris', tobacco: true)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '22:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '22:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mercredi', day: 3, open: '22:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -83,6 +89,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '22:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '22:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '22:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '22:00', close: '03:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Das Paval Alimentation Générale', adress: '71 rue Belleville , Paris', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '15:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '15:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -91,6 +98,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '15:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '15:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '15:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '15:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: '20 rue Jean-Pierre Timbaud', adress: '20 rue Jean-Pierre Timbaud, Paris', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '15:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '15:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -99,6 +107,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '15:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '15:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '15:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '15:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Libre-service Magenta', adress: '5 boulevard Magenta , Paris', tobacco: true)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -107,6 +116,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '12:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Alimentation Générale Cadet', adress: '8 rue Cadet, Paris', tobacco: true)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -115,6 +125,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '12:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Alimentation Générale Lafayette', adress: '166 rue Lafayette , Paris', tobacco: true)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '18:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '18:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -123,6 +134,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '18:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '18:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '18:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '18:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Le petit marché Max Dormoy', adress: '9 rue Marx Dormoy , Paris', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '18:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '18:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -131,6 +143,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '18:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '18:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '18:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '18:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Alimentation Générale Rochechouart', adress: '15 boulevard Rochechouart, Paris', tobacco: true)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -139,6 +152,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '12:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Libre-service La Chapelle', adress: '39 rue de la Chapelle , Paris', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -147,6 +161,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '12:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '12:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Alimentation Omran La Chapelle', adress: '32 rue de La Chapelle, Paris', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '11:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '11:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -155,6 +170,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '11:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '11:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '11:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '11:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Alimentation générale Custine', adress: '13 rue Custine, Paris', tobacco: true)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '11:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '11:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -163,6 +179,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '11:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '11:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '11:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '11:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Le mini-marché Clichy', adress: '11 boulevard de Clichy, Paris', tobacco: true)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '16:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '16:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -171,6 +188,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '16:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '16:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '16:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '16:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Super Market Clichy', adress: '33 boulevard Clichy , Paris', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '16:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '16:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
@@ -179,6 +197,7 @@ shop.operating_hours.create(name_of_day: 'Jeudi', day: 4, open: '16:00', close: 
 shop.operating_hours.create(name_of_day: 'Vendredi',day: 5, open: '16:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Samedi', day: 6, open: '16:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Dimanche', day: 7, open: '16:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
+
 shop = Shop.create(title: 'Mini-Marché Clichy', adress: '60 boulevard de Clichy, Paris', tobacco: false)
 shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '19:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 shop.operating_hours.create(name_of_day: 'Mardi', day: 2, open: '19:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
