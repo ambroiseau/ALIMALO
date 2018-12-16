@@ -28,9 +28,9 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>VOTRE ESPACE</b></a>
           <div class="dropdown-menu" aria-labelledby="navbarNavDropdown" id="espacepro">
 						<% if shop_id = Shop.find_by(user_id: current_user.id) %>
-						  <a class="dropdown-item" data-toggle="modal" data-target="#signUpModal"><%= link_to "VOTRE BUREAU", shop_path(shop_id)%></a>
+						  <a data-toggle="modal" data-target="#signUpModal"><%= link_to "VOTRE BUREAU", shop_path(shop_id), class:"dropdown-item"%></a>
              <% else %>
-							<a class="dropdown-item" data-toggle="modal" data-target="#signUpModal"><%= link_to "VOTRE BUREAU", new_shop_path, { :user_id => current_user.id} %></a>
+							<a data-toggle="modal" data-target="#signUpModal"><%= link_to "VOTRE BUREAU", new_shop_path, { :user_id => current_user.id, class:"dropdown-item" } %></a>
 							<%end%>
               <a data-toggle="modal" data-target="#logInModal"><%=  link_to "DECONNEXION", destroy_user_session_path, method: :delete, class:"dropdown-item" %></a>
               <a class="dropdown-item" href="/home/confidential">CGU</a>
