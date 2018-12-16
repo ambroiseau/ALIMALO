@@ -27,6 +27,7 @@
 
 			<div class="dashboard-right jumbotron col-6 col-md-6 col-md-offset-1">
 				<br><br>
+				<% @hours = @hours.sort_by {|h| h[:day]}%>
 				<% @hours.map do |h| %><br>
 					<%if h[:open] == nil %>
 						<p><em>fermée le <%=h[:name_of_day]%></em></p>
