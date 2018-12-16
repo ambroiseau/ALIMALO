@@ -86,8 +86,6 @@
 <script>
  $(document).ready(function () {
 
-    //var pos;
-
     var myCoords = {lat: 48.86, lng: 2.34}
 
     var mapOptions = {
@@ -368,7 +366,7 @@ function parent(){
     // position = geoposnew;
     geoposnew = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-    // center map, position in the middle
+    // center map, geoposition in the middle
     mymap.setCenter(geoposnew);
 
     // create custom overlay Marker on geolocalisation
@@ -378,203 +376,129 @@ function parent(){
   }
 
   function error () {
-    // output.innerHTML = "Impossible de géolocaliser";
     console.log("impossible de géolocaliser");
   }
 
   navigator.geolocation.getCurrentPosition(success, error)
 
 
-
   // display all shops and event listener
   function displayAllMarkersAndWaitForClick(geoposnew, position) {
 
+          // initiate variables
+          i = 1;
+          var markers=[];
+          // var contents = [];
+          // var infowindows = [];
 
-  // initiate variables
-  i = 1;
-  var markers=[];
-  // var contents = [];
-  // var infowindows = [];
+          // loop to 1) display all markers 2) wait for click on markers (event listener) and return correct shop.id
+          <% @shops.each do |shop| %>
 
-  // loop to 1) display all markers 2) wait for click on markers (event listener) and return correct shop.id
-  <% @shops.each do |shop| %>
+          // condition to handle geocoder gem fails
+          <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
 
-  // condition to handle geocoder gem fails
-  <% if !shop.latitude.to_s.empty? && !shop.longitude.to_s.empty? %>
+            // put markers for each shop in database
+            markers[i] = new google.maps.Marker({
+              position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
+              map: mymap,
+              title: "<%= shop.id %>"
+            });
 
-    // put markers for each shop in database
-    markers[i] = new google.maps.Marker({
-      position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
-      map: mymap,
-      title: "<%= shop.id %>"
-    });
-
-    // add index property on current marker. Needed for event listener : When user clicks on marker, the event listener returns the correct shop id
-    markers[i].index = i;
-
-
-    /////// main function triggered when user clicks on a shop (marker) ///////////////////////////////
-    google.maps.event.addListener(markers[i], 'click', function() {
-
-        // infowindows[this.index].open(mymap,markers[this.index]);
-        mymap.panTo(markers[this.index].getPosition());
-
-        // on click marker, reveal sidebar
-        if ( $("#sidebar").hasClass("inactive") ) {
-            $("#sidebar").removeClass("inactive")
-        };
-
-        // on click, hide welcome message in sidebar
-        $("#alimalo-presentation").hide();
-
-        // send clicked shop info to sidebar
-        document.getElementById("shop").innerHTML = "<%=shop.title%>";
-
-        // *** à enlever ***
-        // <#%  if shop.frontpicture %>
-        // document.getElementById("image").innerHTML = "<%#=image_tag (shop.frontpicture)%>";
-        // <#% end %>
-
-       //  <%#if shop.open? %>
-       //    document.getElementById("open").innerHTML = "OUVERT";
-       //  <%# else%>
-       //    document.getElementById("open").innerHTML = "FERMÉ";
-       //  <%#end%>
-       //  <%#time_hour = Time.now.strftime('%H:%M')%>
-       //  <%# if time_hour > '00:00' and time_hour < '07:00' %>
-       //    <%# day = Time.now.advance(days: -1).strftime('%w') %>
-       //  <%# else %>
-       //    <%# day = Time.now.strftime('%w')%>
-       //  <%# end %>
-
-       //  <%# hour = shop.operating_hours.find_by(day: day)%>
-       //  document.getElementById("open_hour").innerHTML = "<%#= hour[:open].strftime('%H:%M')%>";
-       //  document.getElementById("close_hour").innerHTML = "<%#= hour[:close].strftime('%H:%M')%>";
-
-       //  <%# if shop.close_soon?%>
-       //    document.getElementById("close_soon").innerHTML = "VA BIENTÔT FERMER>";
-       // <%#end%> 
+            // add index property on current marker. Needed for event listener : When user clicks on marker, the event listener returns the correct shop id
+            markers[i].index = i;
 
 
-    //////////////////////////////////////////////////////////////////////////
+            /////// main function triggered when user clicks on a shop (marker) ///////////////////////////////
+            google.maps.event.addListener(markers[i], 'click', function() {
+
+                // infowindows[this.index].open(mymap,markers[this.index]);
+                mymap.panTo(markers[this.index].getPosition());
+
+                // on click marker, reveal sidebar
+                if ( $("#sidebar").hasClass("inactive") ) {
+                    $("#sidebar").removeClass("inactive")
+                };
+
+                // on click, hide welcome message in sidebar
+                $("#alimalo-presentation").hide();
+
+                // send clicked shop info to sidebar
+                document.getElementById("shop").innerHTML = "<%=shop.title%>";
+
+                // *** à enlever ***
+                // <#%  if shop.frontpicture %>
+                // document.getElementById("image").innerHTML = "<%#=image_tag (shop.frontpicture)%>";
+                // <#% end %>
+
+               //  <%#if shop.open? %>
+               //    document.getElementById("open").innerHTML = "OUVERT";
+               //  <%# else%>
+               //    document.getElementById("open").innerHTML = "FERMÉ";
+               //  <%#end%>
+               //  <%#time_hour = Time.now.strftime('%H:%M')%>
+               //  <%# if time_hour > '00:00' and time_hour < '07:00' %>
+               //    <%# day = Time.now.advance(days: -1).strftime('%w') %>
+               //  <%# else %>
+               //    <%# day = Time.now.strftime('%w')%>
+               //  <%# end %>
+
+               //  <%# hour = shop.operating_hours.find_by(day: day)%>
+               //  document.getElementById("open_hour").innerHTML = "<%#= hour[:open].strftime('%H:%M')%>";
+               //  document.getElementById("close_hour").innerHTML = "<%#= hour[:close].strftime('%H:%M')%>";
+
+               //  <%# if shop.close_soon?%>
+               //    document.getElementById("close_soon").innerHTML = "VA BIENTÔT FERMER>";
+               // <%#end%> 
 
 
-      function calculateDistance(html5positionObject, shopLat, shopLong){
-       // var longitude = position.coords.longitude; 
-
-       console.log("on est dans fn distance DYNAMIQUE");
-
-       // calculate distance between 4 hard coded geo points
-       function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-            var R = 6371; // Radius Earth in km
-            var dLat = deg2rad(lat2-lat1);  // deg2rad (see below)
-            var dLon = deg2rad(lon2-lon1); 
-            var a = 
-              Math.sin(dLat/2) * Math.sin(dLat/2) +
-              Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-              Math.sin(dLon/2) * Math.sin(dLon/2); 
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-            var d = R * c; // Distance in km
-            // console.log("voilà la distance en km entre hôpital et bastille, calculée dans sous-fonction...", d);
-            return d;
-            }
-
-            function deg2rad(deg) {
-            return deg * (Math.PI/180);
-        }
-
-      // send dynamic geo points to get Distance from lat long function
-      var dynamicDistanceComplete = getDistanceFromLatLonInKm(html5positionObject.coords.latitude, html5positionObject.coords.longitude,<%=shop.latitude%>,<%=shop.longitude%>);
-
-      console.log("ceci est dynamic distance complete", dynamicDistanceComplete);
-      document.getElementById("distanceHtml").innerHTML = dynamicDistanceComplete;
-
-      }
-
-      calculateDistance(position, <%=shop.latitude%>, <%=shop.longitude%>);
-
-    });
+            //////////////////////////////////////////////////////////////////////////
 
 
+              function calculateDistance(html5positionObject, shopLat, shopLong){
+               // var longitude = position.coords.longitude; 
 
-   <% end %>
-   i++;
-<% end %>
+               console.log("on est dans fn distance DYNAMIQUE");
+
+               // calculate distance between 4 hard coded geo points
+               function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+                    var R = 6371; // Radius Earth in km
+                    var dLat = deg2rad(lat2-lat1);  // deg2rad (see below)
+                    var dLon = deg2rad(lon2-lon1); 
+                    var a = 
+                      Math.sin(dLat/2) * Math.sin(dLat/2) +
+                      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+                      Math.sin(dLon/2) * Math.sin(dLon/2); 
+                    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+                    var d = R * c; // Distance in km
+                    
+                    return d;
+                    }
+
+                    function deg2rad(deg) {
+                    return deg * (Math.PI/180);
+                }
+
+              // send dynamic geo points to get Distance from lat long function
+              var dynamicDistanceComplete = getDistanceFromLatLonInKm(html5positionObject.coords.latitude, html5positionObject.coords.longitude,<%=shop.latitude%>,<%=shop.longitude%>);
+
+              console.log("ceci est dynamic distance complete", dynamicDistanceComplete);
+              document.getElementById("distanceHtml").innerHTML = dynamicDistanceComplete;
+
+              }
+
+              calculateDistance(position, <%=shop.latitude%>, <%=shop.longitude%>);
+
+            });
+
+           <% end %>
+           i++;
+        <% end %>
 
   }
 
 };
 
 parent();
-
-// console.log("on est avant l'appel de la fonction parent");
-// parent();
-
-  // function doSomethingElseWithPosition(){
-  //    var latitude = position.coords.latitude;
-  // }
-
-
-
-
-
-
-
-// Try HTML5 geolocation
-// if (navigator.geolocation) {
-
-//   navigator.geolocation.getCurrentPosition(function(position) {
-
-    // pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-    // // create custom overlay Marker on geolocalisation
-    // new MyPosition(pos, mymap);
-
-    // // center map, position in the middle
-    // mymap.setCenter(pos);
-
-    // },
-
-    // function() {
-    // handleLocationError(true, pos, mymap.getCenter());
-    // });
-
-// } else {
-//     // Browser doesn't support Geolocation
-//     handleLocationError(false, pos, mymap.getCenter());
-// }
-
-
-
-//////////////////////////////////////////////////////////////////////////
-
-
-///////////// calculate distance ///////////////////
-
-console.log("salut");
-
-function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-  var R = 6371; // Radius of the earth in km
-  var dLat = deg2rad(lat2-lat1);  // deg2rad below
-  var dLon = deg2rad(lon2-lon1); 
-  var a = 
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-    Math.sin(dLon/2) * Math.sin(dLon/2)
-    ; 
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-  var d = R * c; // Distance in km
-  return d;
-  }
-
-function deg2rad(deg) {
-  return deg * (Math.PI/180);
-}
-
-// console.log(getDistanceFromLatLonInKm(48.8716,2.393,48.868,2.3015));
-console.log("affiche ça REEEEE");
-// console.log("ceci est pos : ", pos);
-
 
 });
 
