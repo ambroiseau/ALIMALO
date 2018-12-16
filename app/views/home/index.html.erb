@@ -23,6 +23,7 @@
           <div class="etat">
             <h3 id="shop"></h3>
             <h3 id="open"></h3>
+            <div id="picture"></div>
           </div><br>
           <div class="second-line">
             <div id="adress"></div>
@@ -30,7 +31,7 @@
               <h3 id="open_hour"></h3>
             	<h3 id="close_hour"></h3>
             </div>
-
+              
         <li>
       </ul>
     </div>
@@ -498,12 +499,16 @@ var infowindows = [];
         // send clicked shop info to sidebar
 
         document.getElementById("shop").innerHTML = "<%=shop.title%>";
-        document.getElementById("adress").innerHTML = "<%=shop.adress%>"
-				<%if shop.open? %>
+        document.getElementById("adress").innerHTML = "<%=shop.adress%>";
+        <% if shop.frontpicture.attached? %>
+          //document.getElementById("picture").append()
+          $("#picture").append('<%= image_tag shop.frontpicture %>');
+        <% end %>
+        <% if shop.open? %>
         	document.getElementById("open").innerHTML = "OUVERT";
-        <% else%>
+        <% else %>
 					document.getElementById("open").innerHTML = "FERMÉ";
-				<%end%>
+				<% end %>
 				<%time_hour = Time.now.strftime('%H:%M')%>
 				<% if time_hour > '00:00' and time_hour < '07:00' %>
 					<% day = Time.now.advance(days: -1).strftime('%w') %>
@@ -517,7 +522,7 @@ var infowindows = [];
 
 				<% if shop.close_soon?%>
         	document.getElementById("close_soon").innerHTML = "VA BIENTÔT FERMER>";
-       <%end%> 
+       <% end %> 
 
     });
 
