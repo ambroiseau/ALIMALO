@@ -24,7 +24,6 @@
             <div class="info-name">
               <h3 id="shop"></h3>
               <h5 id="adress"></h5>
-              <h5>Vous êtes à <div id="distanceHtml"></p> km</h5>
             </div>
             <div class="timeline">
               <h3 id="open" ></h3>
@@ -32,6 +31,16 @@
               <h3 id="close_hour" class="float-right"></h3>
             </div>
           </div><br>
+
+          <div class="second-line">
+            <div class="itinerary">
+              <h5><a href="#">ITINÉRAIRE</a></h5>
+            </div>
+            <div id="distance-shop">
+              <h2 id="distanceHtml"></h2> 
+              <h5 class="float-right">km</h5>
+            </div>
+          </div>
       </ul>
     </div>
 
@@ -550,7 +559,7 @@ function parent(){
               function calculateDistance(html5positionObject, shopLat, shopLong){
                // var longitude = position.coords.longitude; 
 
-               console.log("on est dans fn distance DYNAMIQUE");
+               console.log("on est dans une distance DYNAMIQUE");
 
                // calculate distance between 4 hard coded geo points
                function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
@@ -575,7 +584,7 @@ function parent(){
               var dynamicDistanceComplete = getDistanceFromLatLonInKm(html5positionObject.coords.latitude, html5positionObject.coords.longitude,<%=shop.latitude%>,<%=shop.longitude%>);
 
               console.log("ceci est dynamic distance complete", dynamicDistanceComplete);
-              var distanceTruncated = dynamicDistanceComplete.toFixed(3);
+              var distanceTruncated = dynamicDistanceComplete.toFixed(1);
               document.getElementById("distanceHtml").innerHTML = distanceTruncated;
 
               }
