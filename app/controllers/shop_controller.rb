@@ -46,12 +46,12 @@ class ShopController < ApplicationController
 	end
 
 	def create_operating_hours
+    @shop.operating_hours.create(name_of_day: 'Dimanche' ,day: 0, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 		@shop.operating_hours.create(name_of_day: 'Lundi' ,day: 1, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 		@shop.operating_hours.create(name_of_day: 'Mardi' ,day: 2, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 		@shop.operating_hours.create(name_of_day: 'Mercredi' ,day: 3, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 		@shop.operating_hours.create(name_of_day: 'Jeudi' ,day: 4, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 		@shop.operating_hours.create(name_of_day: 'Vendredi' ,day: 5, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 		@shop.operating_hours.create(name_of_day: 'Samedi',day: 6, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
-		@shop.operating_hours.create(name_of_day: 'Dimanche' ,day: 0, open: '10:00', close: '02:00',valid_from: '01/10/2018', valid_through: '31/12/2018')
 	end
 end
