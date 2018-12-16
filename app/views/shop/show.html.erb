@@ -32,6 +32,7 @@
 					<%if h[:open] == nil %>
 						<p><em>fermée le <%=h[:name_of_day]%></em></p>
 					<%else%>
+						<%=h[:name_of_day]%>
 						<% string = h[:open].to_s %>
 						Horaires d'ouverture:<%= string[10..15] %>
 						<% string = h[:close].to_s %>
