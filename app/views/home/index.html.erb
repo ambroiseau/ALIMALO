@@ -430,7 +430,6 @@ class MyPosition extends google.maps.OverlayView {
         this.div.style.position = 'absolute';
         this.div.classList.add('pulse')
         this.getPanes().overlayImage.appendChild(this.div)
-        this.title = 'vous êtes ici'
     }
 
     draw () {
@@ -504,7 +503,7 @@ function parent(){
       markers[i] = new google.maps.Marker({
       position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
       map: mymap,
-      title: "<%= shop.id %>",
+      title: "<%= shop.title %>",
       opacity:0.2,
       });
       <%end%>
