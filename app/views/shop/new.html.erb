@@ -1,3 +1,4 @@
+<% if current_user %>
 <div class="container" id="newshop">
 	<div class="jumbotron">
 		<%=simple_form_for @shop , url: {action: "create"} do |f|   %>
@@ -9,4 +10,8 @@
 		<%= f.button :submit%>
 	<% end %>
 	</div>
+	<% else %>
+	<p> Authentifcation requise, connectez vous </p>
+	<%end%>
 </div>
+

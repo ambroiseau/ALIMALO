@@ -1,18 +1,23 @@
 <br>
-<%= form_for @hour, url: {action: "update"}, html: {class: "nifty_form"}, remote: true do |f| %>
+<% if current_user %>
+	<% if current_user.id == @shop.user_id %>
+		<%= form_for @hour, url: {action: "update"}, html: {class: "nifty_form"}, remote: true do |f| %>
 
-<div class="form-row">
+		<div class="form-row">
 
-	<div class="col">
-  		<%= f.time_field :open, class:"form-control"%>
-	</div>
+		<div class="col">
+  			<%= f.time_field :open, class:"form-control"%>
+		</div>
 
-  	<div class="col">
-  		<%= f.time_field :close, class:"form-control"%>
-	</div>
+  		<div class="col">
+  			<%= f.time_field :close, class:"form-control"%>
+		</div>
 
-	<div class="col">
-	<%= f.submit "Mettre à jour", class:"btn btn-outline-dark" %>
-	</div>
-</div>	
-<%end%>
+		<div class="col">
+		<%= f.submit "Mettre à jour", class:"btn btn-outline-dark" %>
+		</div>
+	</div>	
+		<%end%>
+	<% end %>
+<% end %>
+

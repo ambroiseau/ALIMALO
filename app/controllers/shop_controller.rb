@@ -4,41 +4,35 @@ class ShopController < ApplicationController
 	after_action :create_operating_hours, only: [:create], if: -> {@shop.save}
 	respond_to :html, :js
 	
-	def new
-		@shop = Shop.new
-	end
-	def create
-		@shop = Shop.new(shop_params)
-		if @shop.save
-			redirect_to shop_path(@shop.id)
-		else
-			render :action => 'new'
+		def new
+			@shop = Shop.new
 		end
-	end
+		def create
+			@shop = Shop.new(shop_params)
+			if @shop.save
+				redirect_to shop_path(@shop.id)
+			else
+				render :action => 'new'
+			end
+		end
 	
   def show
 	  @hours = @shop.operating_hours
 	end
 	def edit
 	end
-	def update_picture
-		@shop = Shop.find(params[:id])
-		 if @shop.frontpicture.attach(params[:shop][:frontpicture])
-    	redirect_to "/shop/#{params[:id]}"
-		end
-	end
   def update
 		if params[:commit] == "Upload"
-		 if @shop.frontpicture.attach(params[:shop][:frontpicture])
+		  @shop.frontpicture.attach(params[:shop][:frontpicture])
     	redirect_to "/shop/#{params[:id]}"
-			end
+			
 		else
 			 	if  @shop.update_attributes(shop_params)
     		redirect_to "/shop/#{params[:id]}"
     		else
       	render :action => :edit
     	end
-  end
+ 	 end
 end
 	def destroy
     @shop.destroy
