@@ -1,3 +1,8 @@
+/* ---------------------------------------------------
+    ALIMALO NAVBAR
+----------------------------------------------------- */
+
+
 nav {
 	height: 0%;
 	background: #051018;
@@ -5,10 +10,23 @@ nav {
 	width: 100%;
 }
 
+/* LOGO */
+
 nav .navbar-brand {
 	height: 60px;
 	margin-left: 22px;
 }
+
+nav #alimlogo:hover {
+	opacity: 1;
+}
+
+nav #alimlogo {
+	opacity: 0.8;
+}
+
+
+/* MENU*/ 
 
 nav .nav-link {
 	font-family: 'Roboto', sans-serif !important;
@@ -53,14 +71,6 @@ nav .dropdown-item {
 	    border-radius: 8px!important;
 	    opacity: 1!important;
 	}
-}
-
-nav #alimlogo:hover {
-	opacity: 1;
-}
-
-nav #alimlogo {
-	opacity: 0.8;
 }
 
 

@@ -20,18 +20,17 @@
       <div class="sidebar-header" id="image"></div>
         
       <ul class="list-unstyled components">
-          <div class="etat">
-            <h3 id="shop"></h3>
-            <h3 id="open"></h3>
-          </div><br>
-          <div class="second-line">
-            <div id="adress"></div>
-            <div class="timeline">
-              <h3 id="open_hour"></h3>
-            	<h3 id="close_hour"></h3>
+          <div class="info">
+            <div class="info-name">
+              <h3 id="shop"></h3>
+              <h5 id="adress"></h5>
             </div>
-
-        <li>
+            <div class="timeline">
+              <h3 id="open" ></h3>
+              <h3 id="open_hour" class="float-right"></h3>
+              <h3 id="close_hour" class="float-right"></h3>
+            </div>
+          </div><br>
       </ul>
     </div>
 
@@ -42,7 +41,7 @@
   <div id="content">
 
     <!-- Sidebar button -->
-    <div class="navbar navbar-default ">
+    <div class="navbar navbar-default" id="button-sidebar">
       <div class="container-fluid">
         <a id="sidebarCollapse"><span class="hyperspan"></span></a>
       </div>
@@ -500,9 +499,9 @@ var infowindows = [];
         document.getElementById("shop").innerHTML = "<%=shop.title%>";
         document.getElementById("adress").innerHTML = "<%=shop.adress%>"
 				<%if shop.open? %>
-        	document.getElementById("open").innerHTML = "OUVERT";
+        	document.getElementById("open").innerHTML = "<span style='color:#33FF00'>OUVERT</span>";
         <% else%>
-					document.getElementById("open").innerHTML = "FERMÉ";
+					document.getElementById("open").innerHTML = "<span style='color:purple'>FERMÉ</span>";
 				<%end%>
 				<%time_hour = Time.now.strftime('%H:%M')%>
 				<% if time_hour > '00:00' and time_hour < '07:00' %>

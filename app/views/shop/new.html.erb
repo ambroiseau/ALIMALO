@@ -1,8 +1,8 @@
 <div class="container" id="newshop">
 	<div class="jumbotron">
 		<%=simple_form_for @shop , url: {action: "create"} do |f|   %>
-	  <%= f.input  :title, label: "Nom de l épicerie", error: "Nom de l'épicerie requis s'il vous plait" %>
-	  <%= f.input :adress, placeholder: 'Exemple: 5 Rue Francois Mitterrand, Paris', error: "Entrez votre adress suivant le même format que ci-dessus" %>
+	  	<%= f.input  :title, label: "Nom de l épicerie", error: "Nom de l'épicerie requis s'il vous plait" %>
+	  	y<%= f.input :adress, placeholder: 'Exemple: 5 Rue Francois Mitterrand, Paris', error: "Entrez votre adress suivant le même format que ci-dessus" %>
 		<%= f.input :siret, placeholder: '123 568 94', error: " Numero de Siret requis" %>
 		<%= f.input :tobacco, label:'Papier à rouler / Préservatifs' %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
