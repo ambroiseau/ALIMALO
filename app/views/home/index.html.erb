@@ -5,8 +5,7 @@
 
     <div id="alimalo-presentation">
       <br>
-      <h1 class="motto">BIENVENUE SUR ~ALIM-ALO~</h1><br>
-      <h2 class="motto">//Le réseaux des alimentations générales//</h2><br><br>
+      <h2 class="motto">//Le réseau des alimentations générales//</h2><br><br>
 
       <!--       <h2 class="presentation-text">SOMNAMBULES, ANIMAUX </h2>
       <h1 class="presentation-text"> /////SANS SOMMEIL,</h1> <h2 class="presentation-text">INSOMNIAQUES,FÊTARDS CRÉATURES VESPÉRALES//</h2> -->
@@ -469,6 +468,13 @@ var infowindows = [];
       position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
       map: mymap,
       title: "<%= shop.id %>"
+    });
+    <%else%>
+      markers[i] = new google.maps.Marker({
+      position: new google.maps.LatLng(<%=shop.latitude%>, <%=shop.longitude%>),
+      map: mymap,
+      title: "<%= shop.id %>",
+      opacity:0.2,
     });
     <%end%>
     // add index property on current marker. Needed for event listener : When user clicks on marker, the event listener returns the correct shop id
