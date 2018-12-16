@@ -1,7 +1,9 @@
 class ShopController < ApplicationController
 	before_action :all_shops, only: [:index, :create]
+	before_action :shop, except: [:new, :create, :index]
 	after_action :create_operating_hours, only: [:create], if: -> {@shop.save}
 	respond_to :html, :js
+	
 	def new
 		@shop = Shop.new
 	end
@@ -15,28 +17,37 @@ class ShopController < ApplicationController
 	end
 	
   def show
-	  @shop = Shop.find(params[:id])
 	  @hours = @shop.operating_hours
 	end
 	def edit
-    @shop = Shop.find(params[:id])
+	end
+	def update_picture
+		@shop = Shop.find(params[:id])
+		 if @shop.frontpicture.attach(params[:shop][:frontpicture])
+    	redirect_to "/shop/#{params[:id]}"
+		end
 	end
   def update
-    @shop = Shop.find(params[:id])
-    @shop.frontpicture.attach(params[:shop][:frontpicture])
-    redirect_to "/shop/#{params[:id]}"
-		 if  @shop.update_attributes(shop_params)
-    else
-      render :action => :edit
-    end
+		if params[:commit] == "Upload"
+		 if @shop.frontpicture.attach(params[:shop][:frontpicture])
+    	redirect_to "/shop/#{params[:id]}"
+			end
+		else
+			 	if  @shop.update_attributes(shop_params)
+    		redirect_to "/shop/#{params[:id]}"
+    		else
+      	render :action => :edit
+    	end
   end
-
+end
 	def destroy
-    @shop = Shop.find params[:id]
     @shop.destroy
     redirect_to "/shop"
   end
 	private
+	def shop
+    @shop = Shop.find(params[:id])
+	end
 	def all_shops
 		@shops = Shop.all
 	end
