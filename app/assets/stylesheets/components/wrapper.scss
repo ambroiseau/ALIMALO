@@ -114,29 +114,34 @@
 
 
 .wrapper .navbar {
-    display:none;
-    background: #fff;
     width:100%;
     height: 10vh;
     border: 10px solid black;
     border-top-left-radius:2%;
     border-top-right-radius: 2%; 
     z-index: 90000;
-    background-color:white;
-    opacity: 0.5; 
     bottom: 0;
-    position: fixed;        
+    position: fixed;      
+    cursor: pointer;  
         @media (min-width: 991px) {
-            background: #fff;
-            width:70px;
+            width:15px;
             height: 100%;
             border: 10px solid #051018;
             border-radius: 0;
             z-index: 4000;
             float: left;
-            background-color:white;
-            opacity: 0.5; 
     }
+}
+
+
+.wrapper .navbar{
+    background-color: white;
+    opacity: 0.45;
+}
+
+.wrapper .navbar:hover {
+    background-color: white;
+    opacity: 0.65;
 }
 
 .wrapper .hyperspan {
@@ -147,10 +152,8 @@
     top:0;
     z-index:1;
 }
-
-button:focus {
-    outline: 0 !important;
-
+.wrapper.sidebarCollapse:hover {
+    background-color: green;
 }
 
 #newshop {
