@@ -17,8 +17,9 @@
     </div>
 
     <div id="shopshow">
-        
-      <div class="sidebar-header" id="picture"></div>
+      <div class="sidebar-header">
+        <div  id="picture"></div>
+      </div>
 
       <ul class="list-unstyled components">
           <div class="info">
@@ -526,7 +527,7 @@ function parent(){
           $("#alimalo-presentation").hide();
 
           <% if shop.frontpicture.attached? %>
-            $("#picture").append('<%= image_tag shop.frontpicture %>');
+            $("#picture").append("<%= image_tag('shop.frontpicture', style:'width: 100%;')%>");
           <% end %>
           // send clicked shop info to sidebar
           document.getElementById("shop").innerHTML = "<%=shop.title%>";
