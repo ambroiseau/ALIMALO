@@ -16,8 +16,8 @@
 
 /* IMAGE */
 
-.wrapper#sidebar#image {
-    width: 80%;
+.wrapper .sidebar-header {
+    width: 100%;
     border-radius: 1em;
 }
 
@@ -41,6 +41,7 @@
 .wrapper .second-line {
     display:flex;
     justify-content: space-between;
+    margin-top: 8px;
 
 }
 
