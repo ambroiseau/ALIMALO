@@ -42,7 +42,7 @@
 
           <div class="second-line">
             <div class="itinerary">
-              <h5><a href="#">ITINÉRAIRE</a></h5>
+              <h5><a id="itinerary">ITINÉRAIRE</a></h5>
             </div>
             <div id="distance-shop">
               <h2 id="distanceHtml"></h2> 
@@ -602,6 +602,23 @@ function parent(){
         }
 
         calculateDistance(position, <%=shop.latitude%>, <%=shop.longitude%>);
+
+
+        function makeDirectionsLink(shopLat, shopLong) {
+
+
+          console.log("ceci est shop lat", shopLat);
+
+          var linkDirection = 'https://maps.google.com/?q=' + shopLat + ',' + shopLong;
+
+          console.log("linkDirection", linkDirection);
+
+          document.getElementById("itinerary").href = linkDirection;
+
+
+        }
+
+        makeDirectionsLink(<%=shop.latitude%>, <%=shop.longitude%>);
 
       });
 
