@@ -471,6 +471,7 @@ function parent(){
 
   function error () {
     console.log("impossible de géolocaliser");
+    displayAllMarkersAndWaitForClick()
   }
 
   navigator.geolocation.getCurrentPosition(success, error)
