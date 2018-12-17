@@ -14,12 +14,24 @@
 }
 
 
-/* IMAGE */
+/* ICONES */
 
-.wrapper .sidebar-header {
-    width: 100%;
-    border-radius: 1em;
+.wrapper .icones {
+    margin-left: 18px;
 }
+
+.wrapper .icones-unit {
+    width: 80px;
+}
+
+.wrapper .icones-unit-ocb {
+    display: none;
+    @media (min-width: 991px) {
+        display: inline-block;
+        width: 80px;
+    }
+}
+
 
 
 /* VIEW SHOP COMPONENTS */

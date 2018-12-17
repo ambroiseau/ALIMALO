@@ -1,27 +1,40 @@
 
 	<div class="dashboard-main">
 	  <div class="container">
-		<% if current_user%>
+		<% if current_user %>
+			<% if current_user.id == @shop[:user_id]%>
 		<h1>Bonjour <%= current_user.username%>, bienvenue sur votre bureau! </h1>
-		<%end%>
 		<h3>Ici, vous pouvez gérer votre profil en temps réél.</h3>
+		<% end%>
+		<% else%>
+		<h1> Bonjour, voci l'épicerie <h1>
+		<h3>Ici, vous pouvez  voir les horaires en temps réél.</h3>
+	<%end%>
 
 		<div class="dashboard">
 			<div class="row">
 			<div class="dashboard-left col-6">
-				<%= link_to 'Edit', edit_shop_path(@shop.id) %>
-				<%= link_to 'Delete', @shop, :method => 'delete' %>
+			<% if current_user %>
+				<% if current_user.id == @shop[:user_id] %>
+					<%= link_to 'Edit', edit_shop_path(@shop.id) %>
+					<%= link_to 'Delete', @shop, :method => 'delete' %>
+				<%end %>
+			<% end %>
 				<h2><%= @shop.title%></h2>
 				<h4><%= @shop.adress%></h4>
 				<% if @shop.frontpicture.attached? %>
 					<%= image_tag @shop.frontpicture, class:"dashboard-image" %>
 				<% end %><br>
+		<% if current_user %>
+			<% if current_user.id == @shop[:user_id] %>
 				<h6>Modifiez votre image ci-dessous</h6>
 				<%= form_for @shop, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
 				<%= f.file_field :frontpicture, class:"btn btn-outline-dark" %>
 				<%= f.submit "Upload", class:"btn btn-outline-dark" %>
 				<% end %>
+			<% end %>	
 				<%= link_to "Modifier ces information",   new_user_registration_path %>
+			<%end %>
 
 			</div>
 
@@ -39,8 +52,13 @@
 						Horaire de fermeture:<%= string[10..15] %>
 					<%end%>
 				<%end%><br><br><br>
+		<% if current_user %>
+			<% if current_user.id == @shop[:user_id]%>
+				 
 				<p><em>Si vous êtes l'épicier:</em> </p>
-				<h6><%= link_to "Modifier les horraires", shop_operating_hours_path(params[:id]) %> </h6>
+				<h6><%= link_to "Modifier les horaires", shop_operating_hours_path(params[:id]) %> </h6>
+			<%end%>
+			<%end%>
 			</div>
 
 		</div>

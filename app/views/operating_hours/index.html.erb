@@ -1,4 +1,6 @@
-  <div class="container">
+  <% if current_user %>
+		<% if current_user.id == @shop.user_id %> 
+	<div class="container">
   	<div class="jumbotron" style="margin-top: 50px">
 
   		<h3>Faites savoir vos horaires en temps réel !</h3>
@@ -10,3 +12,10 @@
 		<%=render 'hours'%>
   </div>
 </div>
+		<%else%>
+		<p> Cette espace est reservée au propriétaire</p>
+	<% end %>
+	<%else %>
+	<p> Vous n'êtes pas connecté</p>
+<% end %>
+

@@ -1,3 +1,4 @@
+<% if current_user.id == @shop[:user_id] %>
 <div class="container" id="newshop">
 	<div class="jumbotron">
 
@@ -10,3 +11,6 @@
 		<% end %>
 	</div>
 </div>
+<%else%>
+<p> Vous n' êtes pas le proprietaire de cette epicerie </p>
+<% end %>
